@@ -1,0 +1,112 @@
+/* ======================================================================== */
+/* FILE: /src/index.css                                                   */
+/* ======================================================================== */
+
+/* Import Tailwind CSS base styles, components, and utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------------ */
+/* Base HTML and Body Styles                                                */
+/* ------------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-brand-backgroundSubtle text-brand-textDark;
+    font-family: theme('fontFamily.sans');
+    line-height: 1.6;
+  }
+}
+
+/* ------------------------------------------------------------------------ */
+/* Custom Component Styles                                                  */
+/* ------------------------------------------------------------------------ */
+@layer components {
+  .section-padding {
+    @apply px-6 py-16 md:px-12 md:py-24 lg:px-20 lg:py-32;
+  }
+  .container-responsive {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .btn-custom-primary {
+    @apply inline-block bg-brand-primary text-white font-semibold py-3 px-8 rounded-lg shadow-md 
+           hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-brand-primary 
+           focus:ring-opacity-60 transition-all duration-200 ease-in-out;
+  }
+}
+
+/* ------------------------------------------------------------------------ */
+/* Custom Scrollbar Styles                                                  */
+/* ------------------------------------------------------------------------ */
+::-webkit-scrollbar {
+  width: 8px;  
+  height: 8px; 
+}
+::-webkit-scrollbar-track {
+  @apply bg-brand-backgroundSubtle; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral-400; 
+  border-radius: 10px;
+  border: 2px solid theme('colors.brand.backgroundSubtle');
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-500; 
+}
+
+/* ------------------------------------------------------------------------ */
+/* Keyframes for Animations                                                 */
+/* ------------------------------------------------------------------------ */
+@keyframes gradientShift { /* For Hero section background or other gradients */
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- CORRECTED SECTION FOR LOGO CAROUSEL --- */
+
+/* Keyframes for Horizontal Scrolling Carousel */
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Scroll by half the width (since items are duplicated) */
+  }
+}
+
+/* Utility class to apply the scrolling animation */
+.animate-scroll-logos {
+  /* Adjust duration for speed: longer duration = slower scroll */
+  animation: scroll-logos 30s linear infinite; 
+}
+
+/* Optional: Pause animation on hover */
+.animate-scroll-logos:hover {
+  animation-play-state: paused;
+}
+
+/* --- END OF CORRECTED SECTION --- */
+
+/* REMOVE or comment out the old individual rotation keyframes if they are still there */
+/*
+@keyframes continuous-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-logo-rotate {
+  animation: continuous-rotate 10s linear infinite;
+}
+*/
