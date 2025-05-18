@@ -14,6 +14,7 @@ import Portfolio from './components/Section/Portfolio';
 import Services from './components/Section/Services'; 
 import Skills from './components/Section/Skills'; 
 import WorkProcess from './components/Section/WorkProcess'; 
+import FAQ from './components/Section/FAQ'; 
 // import Footer from './components/layout/Footer'; // We'll create this later
 
 
@@ -88,11 +89,12 @@ function App() {
         <Services />
         <Skills />
          <WorkProcess />
+          <FAQ />
         
         {/* Add other sections from your Figma design here:
             
            
-            <FAQ />
+           
             <Testimonials /> 
         */}
         <Contact />
