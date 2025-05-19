@@ -1,147 +1,82 @@
 import React, { useState, useEffect } from 'react';
-import TextPressure from '../common/TextPressure';
-import DecayCard from '../common/DecayCard';
+import { motion } from 'framer-motion'; // For animations
 
-const Home = () => {
-  const userImagePath = "/Image.png";
-  const greetingText = "Hey there";
-  const nameText = "Mahder Taye";
-  const roleText = "Digital Marketing Expert";
-
-  const [showGreeting, setShowGreeting] = useState(false);
-  const [showName, setShowName] = useState(false);
-  const [showRole, setShowRole] = useState(false);
-  const [showImage, setShowImage] = useState(false);
+const Home = () => { // Renamed to Home to match user's file name
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setShowGreeting(true), 300);
-    const timer2 = setTimeout(() => setShowName(true), 600);
-    const timer3 = setTimeout(() => setShowRole(true), 900);
-    const timer4 = setTimeout(() => setShowImage(true), 1200);
-
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-      clearTimeout(timer4);
-    };
+    // Trigger animation shortly after mount
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
   }, []);
 
+  // Animation variants for Framer Motion
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.3, delayChildren: 0.2 },
+    },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.9 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: 'easeOut', delay: 0.4 } },
+  };
+
+
   return (
-    <>
-      <style jsx global>{`
-        @keyframes gradientFlow {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
+    // Hero section container
+    <section
+      id="home" // For potential single-page navigation
+      className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-20 font-sans overflow-hidden"
+      style={{
+        backgroundImage: "url('/bg.png')", // Assumes bg.png is in public folder
+        backgroundSize: 'cover',
+        // Adjusted backgroundPosition to be slightly lower.
+        // You can use 'center top', 'center 20%', 'center 80px' etc.
+        // 'center 60%' means the center of the image is at 60% from the top of the container.
+        backgroundPosition: 'center 60%', // Try adjusting this value (e.g., 'center 70%', 'center bottom')
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Optional: Add a subtle overlay for better text readability if bg.png is very busy */}
+      {/* <div className="absolute inset-0 bg-black opacity-20"></div> */}
 
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
-        }
+      <motion.div
+        className="relative z-10 max-w-4xl w-full mx-auto" // z-10 to be above overlay
+        variants={containerVariants}
+        initial="hidden"
+        animate={isLoaded ? "visible" : "hidden"}
+      >
+        {/* Main Text: "About Mahder" */}
+        <motion.h1
+          variants={textVariants}
+          // Added some top padding to the text to push it down relative to the viewport top,
+          // giving more space for the top part of the background image.
+          className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-800 dark:text-white mb-10 md:mb-12 leading-tight pt-10 md:pt-16"
+        >
+          About Mahder
+        </motion.h1>
 
-        .animated-gradient {
-          background-size: 400% 400%;
-          animation: gradientFlow 15s ease infinite;
-        }
-
-        .wave-emoji {
-          animation: wave 2s infinite;
-          display: inline-block;
-        }
-
-        @keyframes wave {
-          0% { transform: rotate(0deg); }
-          10% { transform: rotate(-10deg); }
-          20% { transform: rotate(12deg); }
-          30% { transform: rotate(-10deg); }
-          40% { transform: rotate(9deg); }
-          50% { transform: rotate(0deg); }
-          100% { transform: rotate(0deg); }
-        }
-      `}</style>
-
-      <div className="relative w-full min-h-screen overflow-hidden flex flex-col items-center justify-center text-center py-20 px-4 font-['InterVariable']">
-        {/* Modern Gradient Background */}
-        <div className="absolute inset-0 animated-gradient" 
-             style={{
-               background: 'linear-gradient(135deg, #f0f4ff 0%, #f8faff 30%, #f5f7ff 50%, #f0f3ff 100%)'
-             }}>
-          {/* Dynamic Gradient Overlay */}
-          <div className="absolute inset-0 opacity-20 mix-blend-soft-light"
-               style={{
-                 background: 'linear-gradient(45deg, rgba(165,180,252,0.15) 0%, rgba(199,210,254,0.1) 50%, rgba(224,231,255,0.15) 100%)'
-               }}></div>
-        </div>
-
-        {/* Floating Particles */}
-        <div className="absolute inset-0 z-10 opacity-10">
-          {[...Array(30)].map((_, i) => (
-            <div key={i} 
-                 className="absolute w-1 h-1 bg-indigo-300 rounded-full animate-float"
-                 style={{
-                   left: `${Math.random() * 100}%`,
-                   top: `${Math.random() * 100}%`,
-                   animationDelay: `${Math.random() * 5}s`,
-                   animationDuration: `${5 + Math.random() * 10}s`
-                 }} />
-          ))}
-        </div>
-
-        {/* Content Container */}
-        <div className="relative z-30 flex flex-col items-center space-y-6 md:space-y-8">
-          {/* Animated Greeting */}
-          <div className={`text-2xl md:text-3xl font-light text-indigo-600/90 transition-opacity duration-1000 ${
-            showGreeting ? 'opacity-100' : 'opacity-0'
-          }`}>
-            {greetingText} <span className="wave-emoji">👋</span>
-          </div>
-
-          {/* Name with TextPressure */}
-          <div className={`transition-opacity duration-1000 ${
-            showName ? 'opacity-100' : 'opacity-0'
-          }`}>
-            <TextPressure
-              text={nameText}
-              flex={true}
-              width={true}
-              weight={true}
-              italic={true}
-              textColor="#1E293B"
-              strokeColor="#3B82F6"
-              minFontSize={64}
-              fontFamily="inter"
-              className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter leading-[0.9]"
-            />
-          </div>
-
-          {/* Role Text */}
-          <div className={`text-xl md:text-2xl font-medium text-indigo-500/90 transition-opacity duration-1000 ${
-            showRole ? 'opacity-100' : 'opacity-0'
-          }`}>
-            {roleText}
-          </div>
-
-          {/* Profile Card */}
-          <div className={`relative group transition-all duration-1000 ${
-            showImage ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-          }`}>
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-100/30 to-purple-100/20 rounded-full blur-xl animate-pulse" />
-            <DecayCard
-              width={300}
-              height={200}
-              className="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full border-4 border-white/80 shadow-2xl hover:shadow-3xl transition-all duration-300"
-              image={userImagePath}
-            >
-              <span className="absolute inset-0 flex items-center justify-center text-4xl md:text-5xl font-black text-white bg-gradient-to-br from-indigo-600/90 to-purple-500/90 rounded-full backdrop-blur-sm">
-                {nameText.charAt(0)}
-              </span>
-            </DecayCard>
-          </div>
-        </div>
-      </div>
-    </>
+        {/* Main Image - Rectangular as per Figma */}
+        <motion.div variants={imageVariants}>
+          <img
+            src="/Image.png" // Your main image from public folder
+            alt="Mahder Halie" // Updated alt text
+            // Reduced max-w- for a smaller image. Try md, sm, or specific pixel/rem values.
+            className="w-full max-w-md mx-auto rounded-lg object-cover shadow-xl" // Changed max-w-lg to max-w-md
+          />
+        </motion.div>
+      </motion.div>
+    </section>
   );
 };
 

@@ -79,7 +79,7 @@ function App() {
   // Adjust as needed
 
   return (
-    <div className="flex flex-col overflow-x-hidden"> {/* Main container for the entire app */}
+    <div className="flex flex-col overflow-x-hidden bg-brand-backgroundLight"> {/* Main container for the entire app */}
       <Navbar />
       
       {/* Main content area where all your sections will be rendered */}
