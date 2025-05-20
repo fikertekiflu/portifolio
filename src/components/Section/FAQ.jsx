@@ -77,8 +77,8 @@ const FAQItem = ({ item, isOpen, onClick }) => {
   };
 
   return (
-    <motion.div 
-      className="border border-brand-borderLight rounded-xl transition-all duration-300 ease-in-out 
+    <motion.div
+      className="border border-brand-borderLight rounded-xl transition-all duration-300 ease-in-out
                  bg-white hover:border-brand-primary/50"
       // Add a subtle shadow on hover or when open if desired:
       // whileHover={{ boxShadow: "0 4px 12px rgba(0,0,0,0.05)" }}
@@ -152,11 +152,11 @@ const FAQ = () => {
   };
 
   return (
-    <section 
-      id="faq" 
-      className="py-20 md:py-32 bg-brand-backgroundSubtle section-padding" 
+    <section
+      id="faq"
+      className="py-20 md:py-32 bg-brand-backgroundSubtle section-padding"
     >
-      <motion.div 
+      <motion.div
         className="container-responsive mx-auto"
         variants={sectionVariants}
         initial="hidden"
@@ -164,15 +164,15 @@ const FAQ = () => {
         viewport={{ once: true, amount: 0.1 }}
       >
         {/* Pre-title */}
-        <motion.p 
+        <motion.p
           className="text-xs font-medium text-brand-textLight uppercase tracking-widest mb-2 text-center md:text-left"
           variants={textContentVariants}
         >
           FAQ
         </motion.p>
-        
+
         {/* Main Title */}
-        <motion.h2 
+        <motion.h2
           className="text-4xl sm:text-5xl font-semibold text-brand-textDark mb-12 md:mb-16 text-center md:text-left tracking-tight"
           variants={textContentVariants}
         >
@@ -180,13 +180,13 @@ const FAQ = () => {
         </motion.h2>
 
         {/* FAQ Grid */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5"
           variants={textContentVariants} // Animate the grid container as well
         >
           {faqData.map((item, index) => (
-            <FAQItem 
-              key={item.id} 
+            <FAQItem
+              key={item.id}
               item={item}
               isOpen={openIndex === index}
               onClick={() => handleItemClick(index)}
