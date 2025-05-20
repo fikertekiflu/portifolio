@@ -73,14 +73,7 @@
 /* --- CORRECTED SECTION FOR LOGO CAROUSEL --- */
 
 /* Keyframes for Horizontal Scrolling Carousel */
-@keyframes scroll-logos {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%); /* Scroll by half the width (since items are duplicated) */
-  }
-}
+
 
 /* Utility class to apply the scrolling animation */
 .animate-scroll-logos {
@@ -92,7 +85,58 @@
 .animate-scroll-logos:hover {
   animation-play-state: paused;
 }
+/* In your src/index.css or equivalent global stylesheet */
+.logo-carousel-mask {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  /* Adjust mask height if needed, or let it be determined by the content */
+  /* height: 100px; /* Example fixed height for the carousel track */
+}
 
+/* Fade effect for the edges - ensure colors match your sectionBg */
+.logo-carousel-mask::before,
+.logo-carousel-mask::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px; /* Adjust width of the fade */
+  z-index: 2;
+}
+/* Light mode fade */
+.logo-carousel-mask::before {
+  left: 0;
+  background: linear-gradient(to right, rgb(249 250 251) 0%, rgba(249, 250, 251, 0) 100%);
+}
+.logo-carousel-mask::after {
+  right: 0;
+  background: linear-gradient(to left, rgb(249 250 251) 0%, rgba(249, 250, 251, 0) 100%);
+}
+/* Dark mode fade */
+.dark .logo-carousel-mask::before {
+  background: linear-gradient(to right, rgb(17 24 39) 0%, rgba(17, 24, 39, 0) 100%);
+}
+.dark .logo-carousel-mask::after {
+  background: linear-gradient(to left, rgb(17 24 39) 0%, rgba(17, 24, 39, 0) 100%);
+}
+
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* THIS VALUE NEEDS TO BE RECALCULATED! */
+    /* Example: If 6 original logos + margins = ~480px total width for one set */
+    transform: translateX(-480px);
+  }
+}
+
+.animate-scroll-logos {
+  animation: scroll-logos 30s linear infinite; /* Adjust duration for speed */
+  display: flex;
+  width: fit-content;
+}
 /* --- END OF CORRECTED SECTION --- */
 
 /* REMOVE or comment out the old individual rotation keyframes if they are still there */

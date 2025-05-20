@@ -1,38 +1,40 @@
 // ========================================================================
 // FILE: /src/components/sections/Skills.jsx
 // ========================================================================
-// Enhanced "Tools & Skills" section - Modernized Styling with Pre-title Icon
+// "Tools & Skills" section - Displaying only logos directly in the carousel,
+// with minimal spacing and no individual containers.
 // ========================================================================
 import React from 'react';
 import { motion } from 'framer-motion';
 
 // Define your skill/tool items.
 const skillItemsData = [
-  { id: 1, logoUrl: "/googleAdd.png" }, // Ensure paths are correct
-  { id: 2, logoUrl: "/googleAnalytics.png" },
-  { id: 3, logoUrl: "/meta.png" },
-  { id: 4, logoUrl: "/canva.png" },
-  { id: 5, logoUrl: "/jira.png" },
-  { id: 6, logoUrl: "/metric.png" },
-  // Add more items if available for better visual density, or adjust duplication logic
+  { id: 1, name: "Google Add", logoUrl: "/Logo1.svg" },
+  { id: 2, name: "Google Analytics", logoUrl: "/Logo2.svg" },
+  { id: 3, name: "Meta", logoUrl: "/Logo3.svg" },
+  { id: 4, name: "Canva", logoUrl: "/Logo4.svg" }, // Assuming Canva uses Logo4.svg
+  { id: 5, name: "Jira", logoUrl: "/Logo5.svg" },   // Assuming Jira uses Logo5.svg
+  { id: 6, name: "metricool", logoUrl: "/Logo6.svg" },// Assuming Metricool uses Logo6.svg
+  // Add more items for a fuller carousel to ensure smooth scrolling
+  // Example:
+  // { id: 7, name: "Figma", logoUrl: "/figma.svg" },
+  // { id: 8, name: "Photoshop", logoUrl: "/photoshop.svg" },
 ];
 
-// Triplicate for a smoother seamless scroll.
-const duplicatedSkillItems = [...skillItemsData, ...skillItemsData, ...skillItemsData];
+// Duplicate items for a smoother seamless scroll.
+// More duplications = smoother loop. Adjust as needed.
+const duplicatedSkillItems = [...skillItemsData, ...skillItemsData, ...skillItemsData, ...skillItemsData];
 
 const Skills = () => {
   // --- Modern Color & Style Definitions ---
   const styles = {
-    sectionBg: "bg-gray-50", // Clean, light background for the section
-    preTitleIcon: "h-4 w-4 mr-2", // Style for the icon next to the pre-title text
-    subHeadlineText: "text-indigo-600", // Vibrant accent for the sub-headline text
-    mainHeadline: "text-gray-900", // Strong, dark gray for the main headline
-    skillItemBg: "bg-white",
-    skillItemBorder: "border-gray-200", // Subtle border for skill items
-    skillItemShadow: "shadow-lg",
-    skillItemHoverShadow: "hover:shadow-xl", // Slightly more pronounced shadow on hover
+    sectionBg: "bg-gray-50 dark:bg-gray-900",
+    preTitleIcon: "h-3.5 w-3.5 mr-1.5",
+    subHeadlineText: "text-indigo-600 dark:text-indigo-400",
+    mainHeadline: "text-gray-800 dark:text-white",
   };
 
+  // --- Animation Variants ---
   const sectionVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -41,7 +43,7 @@ const Skills = () => {
     },
   };
 
-  const textContentVariants = { // Variants for pre-title and main headline
+  const textContentVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -62,12 +64,10 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className={`py-20 md:py-32 ${styles.sectionBg} section-padding`} 
-      // IMPORTANT: Ensure the fade color in your CSS for '.logo-carousel-mask::before/after'
-      // matches the new section background (e.g., the color of 'bg-gray-50').
+      className={`py-16 md:py-24 ${styles.sectionBg} section-padding overflow-hidden`}
     >
       <motion.div
-        className="container-responsive mx-auto text-center"
+        className="container-responsive mx-auto text-center px-4"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
@@ -75,21 +75,21 @@ const Skills = () => {
       >
         {/* Pre-title with Icon */}
         <motion.div
-          className={`flex items-center justify-center mb-2`} // Centering container
-          variants={textContentVariants} // Apply animation to this container
+          className={`flex items-center justify-center mb-2`}
+          variants={textContentVariants}
         >
           <img
             src="/first.svg" // Path to your icon in the /public folder
             alt="" // Decorative icon
             className={styles.preTitleIcon}
           />
-          <span className={`text-sm font-medium ${styles.subHeadlineText} uppercase tracking-wider`}>
+          <span className={`text-xs font-semibold ${styles.subHeadlineText} uppercase tracking-wider`}>
             Tools & Skills
           </span>
         </motion.div>
 
         <motion.h2
-          className={`text-4xl sm:text-5xl font-semibold ${styles.mainHeadline} mb-12 md:mb-16 tracking-tight`}
+          className={`text-3xl sm:text-4xl font-bold ${styles.mainHeadline} mb-12 md:mb-16 tracking-tight`}
           variants={textContentVariants}
         >
           Explore My Tools & Skills
@@ -98,33 +98,31 @@ const Skills = () => {
 
       {/* Logos Carousel Container */}
       <motion.div
-        className="mt-8 relative w-full max-w-6xl mx-auto"
+        className="mt-0 relative w-full" // Carousel takes full width
         variants={carouselContainerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
       >
         {/* Mask for fading edges (styling primarily in CSS) */}
-        <div className="logo-carousel-mask"> 
+        <div className="logo-carousel-mask"> {/* Ensure this mask has appropriate height */}
           <div className="flex items-center animate-scroll-logos">
             {duplicatedSkillItems.map((skill, index) => (
-              <div
-                key={`${skill.id}-${index}-${Math.random()}`} // Current key structure
-                className={`
-                  flex-shrink-0 mx-6 md:mx-10 p-5 
-                  ${styles.skillItemBg} 
-                  ${styles.skillItemShadow} ${styles.skillItemHoverShadow}
-                  rounded-2xl border ${styles.skillItemBorder}
-                  transition-all duration-300 ease-in-out 
-                  transform hover:scale-105 hover:-translate-y-1
-                `}
-              >
-                <img
-                  src={skill.logoUrl}
-                  alt={`Skill logo ${skill.id}`}
-                  className="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 object-contain"
-                />
-              </div>
+              // Each item is now just the image with margin for spacing
+              <img
+                key={`${skill.id}-${index}`}
+                src={skill.logoUrl} // Ensure these paths are correct (e.g., /logos/googleAdd.png)
+                alt={`${skill.name} logo`} // Name is still useful for alt text
+                // Define the size of the logos directly and add horizontal margin for spacing
+                // Reduced horizontal margin (mx-3 or mx-4)
+                // Adjusted logo height
+                className="
+                  h-8 sm:h-10 md:h-12 w-auto object-contain flex-shrink-0
+                  mx-3 md:mx-5 
+                  transition-transform duration-300 ease-in-out
+                  transform hover:scale-110
+                "
+              />
             ))}
           </div>
         </div>
