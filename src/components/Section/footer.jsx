@@ -1,7 +1,7 @@
 import React from 'react';
 import { Separator } from "@radix-ui/react-separator";
 import GradientText from './GradientText'
-import './Marquee.css'; // Import the new Marquee CSS
+import './Marquee.css'; // Ensure this is imported
 
 // Sample testimonial data (replace with your actual data)
 const testimonialsData = [
@@ -40,13 +40,8 @@ function TestimonialCard({ quote, name, avatarSrc }) {
 }
 
 function Footer() {
-    // Marquee text data - Duplicate to create a seamless loop
+    // Marquee text data - Duplicate sufficiently for a seamless loop
     const baseMarqueeTexts = [
-        { text: "LET'S CHAT", className: "text-[11.5px] tracking-[0.115px] leading-[20.7px] font-semibold" },
-        { text: "LET'S CHAT", className: "text-[42.4px] tracking-[-0.46px] leading-[41.9px] font-semibold" },
-        { text: "LET'S CHAT", className: "text-[43.1px] tracking-[-0.46px] leading-[41.9px] font-semibold" },
-        { text: "LET'S CHAT", className: "text-[11.5px] tracking-[0.115px] leading-[20.7px] font-semibold" },
-        { text: "LET'S CHAT", className: "text-[11.5px] tracking-[0.115px] leading-[20.7px] font-semibold" },
         { text: "LET'S CHAT", className: "text-[11.5px] tracking-[0.115px] leading-[20.7px] font-semibold" },
         { text: "LET'S CHAT", className: "text-[42.4px] tracking-[-0.46px] leading-[41.9px] font-semibold" },
         { text: "LET'S CHAT", className: "text-[43.1px] tracking-[-0.46px] leading-[41.9px] font-semibold" },
@@ -55,8 +50,11 @@ function Footer() {
         { text: "LET'S CHAT", className: "text-[11.5px] tracking-[0.115px] leading-[20.7px] font-semibold" },
     ];
 
-    // Duplicate the content for a seamless marquee effect
-    const marqueeTexts = [...baseMarqueeTexts, ...baseMarqueeTexts];
+    // **KEY FOR INFINITE LOOP:** Duplicate the content multiple times.
+    // At least twice is necessary. Three or four times provides more buffer,
+    // especially on very wide screens or with short content.
+    const marqueeTexts = [...baseMarqueeTexts, ...baseMarqueeTexts, ...baseMarqueeTexts, ...baseMarqueeTexts];
+
 
     return (
         <div className="w-full bg-black h-[1140px]">
@@ -76,7 +74,7 @@ function Footer() {
                     </div>
                 </section>
 
-                {/* Container for MAHDER HAILE and Colored Section (New structure) */}
+                {/* Container for MAHDER HAILE and Colored Section */}
                 <div className="flex items-center pt-[23px] pb-10 ">
                     {/* Left Side: MAHDER HAILE */}
                     <div className="inline-flex flex-col items-start ">
@@ -86,24 +84,26 @@ function Footer() {
                         </h1>
                     </div>
 
-                    {/* Colored Background Section with Marquee - Adjusted */}
+                    {/* Colored Background Section with Marquee */}
                     <div
                         className="relative overflow-hidden flex-grow rounded-lg bg-[url('/backcolor.png')] bg-cover bg-center"
                         style={{
                             height: '600px',
                         }}
                     >
-                        {/* Marquee Text Container */}
-                        <div className="absolute top-[30%] w-full flex justify-center items-center ml-[10%] mr-[10%] overflow-hidden">
-                          <div className="marquee-container"> {/* Apply the marquee-container class here */}
-                                {marqueeTexts.map((item, index) => (
-                                    <div
-                                        key={index}
-                                        className={`text-white text-center whitespace-nowrap font-['Inter'] ${item.className}`}
-                                    >
-                                        {item.text}
-                                    </div>
-                                ))}
+                        {/* Marquee Text Container - WRAPPER FOR OVERFLOW */}
+                        <div className="absolute top-[30%] w-full flex justify-center items-center">
+                            <div className="marquee-parent-wrapper"> {/* This wrapper defines the visible area */}
+                                <div className="marquee-container"> {/* This is the animated element */}
+                                    {marqueeTexts.map((item, index) => (
+                                        <div
+                                            key={index}
+                                            className={`text-white text-center font-['Inter'] ${item.className}`}
+                                        >
+                                            {item.text}
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
@@ -112,7 +112,7 @@ function Footer() {
                             <div className="inline-flex flex-col items-center justify-center p-5 bg-black/30 rounded-[61px] shadow-[inset_0px_7px_10px_#0000000a,inset_0px_2px_2px_#bd3c007d,inset_0px_-1px_0px_#ffffff40] backdrop-blur-[0.5px] backdrop-brightness-[100%] border border-solid border-[#ffffff2b]">
                                 <GradientText
                                     colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-                                    animationSpeed={7}
+                                    animationSpeed={3}
                                     showBorder={false}
                                     className="custom-class"
                                 >
