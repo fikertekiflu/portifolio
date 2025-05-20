@@ -7,22 +7,22 @@ import './Marquee.css'; // Ensure this is imported
 const testimonialsData = [
     {
         quote: "Approach to campaign strategy and maintained the balance between creative and performance marketing, showing strong focus on brand identity and quality.",
-        name: "Mulugata Alemu",
+        name: "Mulugata Abrha",
         avatarSrc: "/two.png", // Replace with actual image path
     },
     {
         quote: "Approach to campaign strategy and maintained the balance between creative and performance marketing, showing strong focus on brand identity and quality.",
-        name: "Mulugata Alemu",
+        name: "Mulugata Abrha",
         avatarSrc: "/two.png", // Replace with actual image path
     },
     {
         quote: "Approach to campaign strategy and maintained the balance between creative and performance marketing, showing strong focus on brand identity and quality.",
-        name: "Mulugata Alemu",
+        name: "Mulugata Abrha",
         avatarSrc: "/two.png", // Replace with actual image path
     },
     {
         quote: "Approach to campaign strategy and maintained the balance between creative and performance marketing, showing strong focus on brand identity and quality.",
-        name: "Mulugata Alemu",
+        name: "Mulugata Abrha",
         avatarSrc: "/two.png", // Replace with actual image path
     },
 ];
@@ -108,7 +108,7 @@ function Footer() {
                         </div>
 
                         {/* CTA Button - Inside the colored background div */}
-                        <div className="absolute bottom-20 left-[48%] -translate-x-1/2 text-[35px]">
+                        <div className="absolute bottom-20 left-[49%] -translate-x-1/2 text-[35px]">
                             <div className="inline-flex pl-12 flex-col items-center justify-center p-5 bg-black/30 rounded-[61px] shadow-[inset_0px_7px_10px_#0000000a,inset_0px_2px_2px_#bd3c007d,inset_0px_-1px_0px_#ffffff40] backdrop-blur-[0.5px] backdrop-brightness-[100%] border border-solid border-[#ffffff2b]">
                                 <GradientText
                                     colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
