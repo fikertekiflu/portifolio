@@ -43,20 +43,20 @@ const Portfolio = () => {
   };
 
   return (
-    <section 
-      id="portfolio" 
-      className="py-20 md:py-32 bg-brand-backgroundSubtle section-padding" 
+    <section
+      id="portfolio"
+      className="py-20 md:py-32 bg-brand-backgroundSubtle section-padding"
       // Using theme colors. Adjust bg-brand-backgroundSubtle or use bg-brand-backgroundLight
     >
-      <motion.div 
-        className="container-responsive mx-auto text-center" 
+      <motion.div
+        className="container-responsive mx-auto text-center"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }} // Trigger when 20% of section is visible
       >
         {/* Section Title */}
-        <motion.h2 
+        <motion.h2
           className="text-4xl sm:text-5xl font-semibold text-brand-textDark mb-6 md:mb-8 tracking-tight"
           variants={textContentVariants}
         >
@@ -65,7 +65,7 @@ const Portfolio = () => {
         </motion.h2>
 
         {/* Introductory Text */}
-        <motion.p 
+        <motion.p
           className="text-lg md:text-xl text-brand-textLight leading-relaxed max-w-2xl mx-auto mb-12 md:mb-16"
           variants={textContentVariants}
         >
@@ -73,20 +73,20 @@ const Portfolio = () => {
         </motion.p>
 
         {/* Circular Gallery */}
-        <motion.div 
+        <motion.div
           className="w-full max-w-4xl mx-auto" // Constrain width of the gallery container
           variants={galleryVariants}
         >
-          <div style={{ height: '600px', position: 'relative'}}> 
+          <div style={{ height: '600px', position: 'relative'}}>
             {/* Added borderRadius and overflow:hidden for a cleaner look if gallery has sharp edges */}
             {/* The background of this div can be styled if the gallery itself is transparent */}
             {/* e.g., className="bg-brand-backgroundLight shadow-xl rounded-lg" */}
-            <CircularGallery 
-              bend={3} 
+            <CircularGallery
+              bend={3}
               textColor="#ffffff" // White text as specified
-              borderRadius={0.05} 
+              borderRadius={0.05}
               // Add other props your CircularGallery component might need
-              // items={[ ...your project items... ]} 
+              // items={[ ...your project items... ]}
             />
           </div>
         </motion.div>

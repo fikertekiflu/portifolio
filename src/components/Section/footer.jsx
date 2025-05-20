@@ -42,12 +42,12 @@ function TestimonialCard({ quote, name, avatarSrc }) {
 function Footer() {
     // Marquee text data - Duplicate sufficiently for a seamless loop
     const baseMarqueeTexts = [
-        { text: "LET'S CHAT", className: "text-[11.5px] tracking-[0.115px] leading-[20.7px] font-semibold" },
+        { text: "LET'S CHAT", className: "text-[42.4px] tracking-[0.115px] leading-[20.7px] font-semibold" },
         { text: "LET'S CHAT", className: "text-[42.4px] tracking-[-0.46px] leading-[41.9px] font-semibold" },
-        { text: "LET'S CHAT", className: "text-[43.1px] tracking-[-0.46px] leading-[41.9px] font-semibold" },
-        { text: "LET'S CHAT", className: "text-[11.5px] tracking-[0.115px] leading-[20.7px] font-semibold" },
-        { text: "LET'S CHAT", className: "text-[11.5px] tracking-[0.115px] leading-[20.7px] font-semibold" },
-        { text: "LET'S CHAT", className: "text-[11.5px] tracking-[0.115px] leading-[20.7px] font-semibold" },
+        { text: "LET'S CHAT", className: "text-[42.4px] tracking-[-0.46px] leading-[41.9px] font-semibold" },
+        { text: "LET'S CHAT", className: "text-[42.4px] tracking-[0.115px] leading-[20.7px] font-semibold" },
+        { text: "LET'S CHAT", className: "text-[42.4px] tracking-[0.115px] leading-[20.7px] font-semibold" },
+        { text: "LET'S CHAT", className: "text-[42.4px] tracking-[0.115px] leading-[20.7px] font-semibold" },
     ];
 
     // **KEY FOR INFINITE LOOP:** Duplicate the content multiple times.
@@ -108,12 +108,12 @@ function Footer() {
                         </div>
 
                         {/* CTA Button - Inside the colored background div */}
-                        <div className="absolute bottom-20 left-1/2 -translate-x-1/2">
-                            <div className="inline-flex flex-col items-center justify-center p-5 bg-black/30 rounded-[61px] shadow-[inset_0px_7px_10px_#0000000a,inset_0px_2px_2px_#bd3c007d,inset_0px_-1px_0px_#ffffff40] backdrop-blur-[0.5px] backdrop-brightness-[100%] border border-solid border-[#ffffff2b]">
+                        <div className="absolute bottom-20 left-[48%] -translate-x-1/2 text-[35px]">
+                            <div className="inline-flex pl-12 flex-col items-center justify-center p-5 bg-black/30 rounded-[61px] shadow-[inset_0px_7px_10px_#0000000a,inset_0px_2px_2px_#bd3c007d,inset_0px_-1px_0px_#ffffff40] backdrop-blur-[0.5px] backdrop-brightness-[100%] border border-solid border-[#ffffff2b]">
                                 <GradientText
                                     colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
                                     animationSpeed={3}
-                                    showBorder={false}
+                                    showBorder={true}
                                     className="custom-class"
                                 >
                                     Ready to talk! Let's chat

@@ -15,9 +15,9 @@ export default function GradientText({
   };
 
   return (
-    <div className={`animated-gradient-text ${className}`}>
-      {showBorder && <div className="gradient-overlay" style={gradientStyle}></div>}
-      <div className="text-content" style={gradientStyle}>{children}</div>
+    <div >
+      {showBorder && <div className="gradient-overlay rounded-3xl w-[500px] h-[100px]" style={gradientStyle}></div>}
+      <div className="text-content  rounded-lg" style={gradientStyle}>{children}</div>
     </div>
   );
 }
