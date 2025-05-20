@@ -88,9 +88,9 @@ function App() {
         <Home />
         <About />
         <Best />
-        <Portfolio />
         <Services />
         <Skills />
+        <Portfolio />
          <WorkProcess />
           <FAQ />
           <Testimonials /> 
