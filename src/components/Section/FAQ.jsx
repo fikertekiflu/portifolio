@@ -129,7 +129,6 @@ const FAQItem = ({ item, isOpen, onClick }) => {
     </motion.div>
   );
 };
-
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null); // Index of the currently open FAQ item
 
