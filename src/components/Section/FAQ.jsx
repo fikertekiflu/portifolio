@@ -1,8 +1,16 @@
-
+// ========================================================================
+// FILE: /src/components/sections/FAQ.jsx
+// ========================================================================
+// A modern and elegant "Frequently Asked Question" section with
+// accordion functionality for displaying answers.
+// Resolved merge conflict markers.
+// ========================================================================
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PlusCircle, MinusCircle } from 'lucide-react'; // Icons for open/close state
 
+// Define your FAQ data here.
+// CRUCIAL: Ensure each 'id' is unique.
 const faqData = [
   {
     id: 1, // Unique ID
@@ -79,8 +87,7 @@ const FAQItem = ({ item, isOpen, onClick }) => {
 
   return (
     <motion.div
-      // Ensure these custom classes are defined in your Tailwind config or global CSS
-      // e.g., border-brand-borderLight, bg-white, hover:border-brand-primary/50
+      // Corrected className by removing merge conflict markers
       className={`border border-brand-borderLight rounded-xl transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 hover:border-brand-primary/50 dark:border-gray-700 dark:hover:border-brand-primary/70
                   ${isOpen ? 'border-brand-primary dark:border-brand-primary shadow-lg' : 'shadow-sm'}`}
       layout // Added Framer Motion's layout prop for smoother animations during size changes
@@ -113,7 +120,6 @@ const FAQItem = ({ item, isOpen, onClick }) => {
             initial="hidden"
             animate="visible"
             exit="exit" // Use the defined exit variant
-            // Ensure text-brand-textLight and border-brand-borderLight are defined
             className="px-4 md:px-5 text-brand-textLight dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-brand-borderLight dark:border-gray-700"
           >
             {item.answer}
@@ -124,11 +130,9 @@ const FAQItem = ({ item, isOpen, onClick }) => {
   );
 };
 
-
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null); // Index of the currently open FAQ item
 
-  // For debugging: Check for unique IDs on mount
   useEffect(() => {
     const ids = faqData.map(item => item.id);
     const uniqueIds = new Set(ids);
@@ -192,7 +196,6 @@ const FAQ = () => {
         {/* FAQ Grid */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5"
-          // Removed variants from here to let FAQItem handle its own animation based on isOpen
         >
           {faqData.map((item, index) => (
             <FAQItem

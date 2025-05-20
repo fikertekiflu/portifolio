@@ -1,0 +1,23 @@
+/* Marquee.css */
+
+@keyframes marquee-horizontal {
+  0% {
+    transform: translateX(0%); /* Start from the initial position */
+  }
+  100% {
+    transform: translateX(-100%); /* Move to the left by 100% of its width */
+  }
+}
+
+.marquee-container {
+  display: flex; /* Ensures items are side-by-side */
+  white-space: nowrap; /* Prevents text from wrapping */
+  animation: marquee-horizontal 30s linear infinite; /* Adjust time as needed */
+  /* This ensures that the animation plays infinitely */
+}
+
+/* Optional: To create a continuous loop, you might need to duplicate the content */
+.marquee-container > * {
+  display: inline-block; /* Treat children as inline blocks for proper spacing */
+  padding-right: 100px; /* Adjust spacing between repeated text */
+}
