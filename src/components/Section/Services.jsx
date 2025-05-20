@@ -3,33 +3,34 @@ import { motion } from 'framer-motion';
 import { LuArrowRight } from 'react-icons/lu'; // For the "Learn More" button icon
 
 // Define your service items.
+// Now using cardImageUrl for the full background image of the card.
 const serviceItemsData = [
   {
     id: 1,
     title: "Digital Strategy",
     description: "Crafting targeted digital blueprints to elevate your brand's online presence and achieve measurable goals.",
-    iconUrl: "/bulb.svg", // Path relative to the public folder
+    cardImageUrl: "/card1.png", // Path relative to the public folder
     learnMoreLink: "#" // Placeholder link
   },
   {
     id: 2,
     title: "Branding & Identity",
     description: "Developing unique brand identities that resonate with your audience and establish a strong market position.",
-    iconUrl: "/cup.svg", // Path relative to the public folder
+    cardImageUrl: "/card2.png", // Path relative to the public folder
     learnMoreLink: "#"
   },
   {
     id: 3,
     title: "Content Creation",
     description: "Producing compelling and engaging content tailored to your brand's voice and marketing objectives.",
-    iconUrl: "/point.svg", // Path relative to the public folder
+    cardImageUrl: "/card3.png", // Path relative to the public folder
     learnMoreLink: "#"
   },
   {
     id: 4,
     title: "Marketing Systems",
     description: "Implementing and optimizing marketing automation and analytics systems for efficient campaign management.",
-    iconUrl: "/star.svg", // Path relative to the public folder
+    cardImageUrl: "/card4.png", // Path relative to the public folder
     learnMoreLink: "#"
   },
 ];
@@ -38,42 +39,45 @@ const ServiceCard = ({ item, variants }) => {
   return (
     <motion.div
       variants={variants}
-      className="relative rounded-2xl overflow-hidden shadow-xl group transform transition-all duration-300 ease-out hover:scale-[1.03]"
+      className="relative rounded-2xl overflow-hidden shadow-xl group transform transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-2xl"
       style={{
-        backgroundImage: `url('/Rectangle.png')`, // Purple rectangle background
+        backgroundImage: `url('${item.cardImageUrl}')`, // Use the full card image as background
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
-      {/* Optional: Add a very subtle dark overlay if text readability is an issue over rectangle.png
-          <div className="absolute inset-0 bg-black opacity-10 group-hover:opacity-5 transition-opacity duration-300"></div>
-      */}
-      <div className="relative z-10 p-6 md:p-8 h-full flex flex-col justify-between min-h-[280px] sm:min-h-[300px] md:min-h-[320px]">
-        {/* Icon and Title Area */}
-        <div className="mb-4">
-          <img
-            src={item.iconUrl}
-            alt={`${item.title} icon`}
-            className="w-12 h-12 md:w-14 md:h-14 mb-4 opacity-90 group-hover:opacity-100 transition-opacity"
-            // Add filter for white color if SVGs are not already white
-            // style={{ filter: 'brightness(0) invert(1)' }}
-          />
-          <h3 className="text-xl md:text-2xl font-semibold text-white tracking-tight">
+      {/* Subtle overlay to enhance text readability if card images are very busy */}
+      <div className="absolute inset-0 bg-black opacity-25 group-hover:opacity-15 transition-opacity duration-300"></div>
+
+      {/* Content container: positions text on top of the background image */}
+      {/* Using flex to push "Learn More" to the bottom */}
+      <div className="relative z-10 p-6 md:p-8 h-full flex flex-col justify-between min-h-[260px] sm:min-h-[280px] md:min-h-[300px]">
+        {/* Top part: Title and Description */}
+        <div>
+          <h3 className="text-xl md:text-2xl font-semibold text-white mb-2 tracking-tight">
             {item.title}
           </h3>
-        </div>
-
-        {/* Description and Learn More */}
-        <div>
-          <p className="text-sm text-gray-200/90 mb-5 leading-relaxed">
+          <p className="text-xs md:text-sm text-gray-200/90 mb-4 leading-relaxed line-clamp-3 group-hover:line-clamp-none transition-all duration-200">
+            {/* line-clamp-3 will show 3 lines and add '...' if text is longer. Expands on hover. */}
+            {/* You might need to install @tailwindcss/line-clamp: npm install -D @tailwindcss/line-clamp */}
+            {/* Then add require('@tailwindcss/line-clamp') to your tailwind.config.js plugins array. */}
             {item.description}
           </p>
+        </div>
+
+        {/* Bottom part: Learn More Button */}
+        <div>
           <a
             href={item.learnMoreLink}
-            className="inline-flex items-center text-xs font-medium text-white uppercase tracking-wider pb-1 border-b border-transparent hover:border-white/70 transition-colors duration-300 group/link"
+            // Styling the button to match the small, dark button in image_d58ac2.png
+            className="inline-flex items-center text-xs font-medium text-gray-200 
+                       bg-black/50 hover:bg-black/70 backdrop-blur-sm
+                       py-1.5 px-4 rounded-md
+                       transition-all duration-200 ease-in-out
+                       transform group-hover:scale-105 group/link"
           >
-            Learn More
-            <LuArrowRight className="w-3.5 h-3.5 ml-1.5 transition-transform duration-200 group-hover/link:translate-x-1" />
+            LEARN MORE
+            <LuArrowRight className="w-3 h-3 ml-1.5 transition-transform duration-200 group-hover/link:translate-x-0.5" />
           </a>
         </div>
       </div>
@@ -111,13 +115,12 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="py-16 md:py-24 bg-white dark:bg-gray-900 font-sans overflow-hidden"
+      className="py-16 md:py-24 bg-white dark:bg-gray-900 font-sans overflow-hidden section-padding" // Assuming section-padding is defined
     >
       <motion.div
-        className="container mx-auto px-6"
+        className="container-responsive mx-auto px-6" // Assuming container-responsive is defined
         variants={sectionVariants}
         initial="hidden"
-        // Animate when isLoaded is true or use a scroll trigger hook
         animate={isLoaded ? "visible" : "hidden"}
       >
         {/* Section Header */}

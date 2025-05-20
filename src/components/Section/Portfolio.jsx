@@ -74,7 +74,7 @@ const Portfolio = () => {
 
         {/* Circular Gallery */}
         <motion.div 
-          className="w-full max-w-4xl mx-auto" // Constrain width of the gallery container
+          className="w-full max-w-12xl mx-auto" // Constrain width of the gallery container
           variants={galleryVariants}
         >
           <div style={{ height: '600px', position: 'relative'}}> 
@@ -83,7 +83,7 @@ const Portfolio = () => {
             {/* e.g., className="bg-brand-backgroundLight shadow-xl rounded-lg" */}
             <CircularGallery 
               bend={3} 
-              textColor="#ffffff" // White text as specified
+              textColor="#000000" // White text as specified
               borderRadius={0.05} 
               // Add other props your CircularGallery component might need
               // items={[ ...your project items... ]} 

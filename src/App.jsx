@@ -82,6 +82,24 @@ function App() {
 
   return (
     <div className="flex flex-col overflow-x-hidden bg-brand-backgroundLight"> {/* Main container for the entire app */}
+       <style jsx global>{`
+        * {
+          cursor: url('https://ani.cursors-4u.net/cursors/cur-13/cur1160.ani'),
+                  url('https://ani.cursors-4u.net/cursors/cur-13/cur1160.png'),
+                  auto !important;
+        }
+      `}</style>
+
+      {/* Hidden attribution (required by license) */}
+      <a
+        href="https://www.cursors-4u.com/cursor/2018/06/08/hell-yeah-pointer-3.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute -top-[9999px] -left-[9999px]"
+      >
+        <img src="https://cur.cursors-4u.net/cursor.png" alt="Cursor Attribution" />
+      </a>
+      
       <Navbar />
 
       {/* Main content area where all your sections will be rendered */}
@@ -89,7 +107,7 @@ function App() {
         <Home />
         <About />
         <Best />
-        <Services />
+        {/* <Services /> */}
         <Skills />
         <Portfolio />
          <WorkProcess />

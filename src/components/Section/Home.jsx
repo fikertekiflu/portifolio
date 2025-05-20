@@ -38,12 +38,12 @@ const Home = () => { // Renamed to Home to match user's file name
       id="home" // For potential single-page navigation
       className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-20 font-sans overflow-hidden"
       style={{
-        backgroundImage: "url('/bg.png')", // Assumes bg.png is in public folder
+        backgroundImage: "url('/b.png')", // Assumes bg.png is in public folder
         backgroundSize: 'cover',
         // Adjusted backgroundPosition to be slightly lower.
         // You can use 'center top', 'center 20%', 'center 80px' etc.
         // 'center 60%' means the center of the image is at 60% from the top of the container.
-        backgroundPosition: 'center 60%', // Try adjusting this value (e.g., 'center 70%', 'center bottom')
+         // Try adjusting this value (e.g., 'center 70%', 'center bottom')
         backgroundRepeat: 'no-repeat',
       }}
     >
@@ -61,13 +61,13 @@ const Home = () => { // Renamed to Home to match user's file name
           variants={textVariants}
           // Added some top padding to the text to push it down relative to the viewport top,
           // giving more space for the top part of the background image.
-          className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-800 dark:text-white mb-10 md:mb-12 leading-tight pt-10 md:pt-16"
+          className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-800 dark:text-white mb-20 md:mb-12 leading-tight pt-36 md:pt-46"
         >
           About Mahder
         </motion.h1>
 
         {/* Main Image - Rectangular as per Figma */}
-        <motion.div variants={imageVariants}>
+        <motion.div variants={imageVariants} className="mt-16 md:mt-20">
           <img
             src="/Image.png" // Your main image from public folder
             alt="Mahder Halie" // Updated alt text

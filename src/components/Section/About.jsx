@@ -33,7 +33,7 @@ const About = () => {
         animate={isLoaded ? "visible" : "hidden"}
       >
         {/* Text Block (from your Figma image_1fc8ac.png) */}
-        <div className="max-w-3xl mx-auto text-center">
+        <div className=" mx-auto ">
           {/*
             The "About Mahder" title is part of the Hero section in the overall design (image_1f5fcf.png).
             This component focuses on the paragraph block below it.
@@ -46,24 +46,24 @@ const About = () => {
           </h2>
           */}
 
-          <p className="text-lg md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed md:leading-loose">
+          <p className="text-lg md:text-6xl  text-bold lg:text-5xl text-gray-700 dark:text-gray-300 leading-relaxed md:leading-loose">
             As a Digital Marketing
             {/* Inline image for your first icon */}
             <img
               src="/one.png" // Assumes one.png is in the public folder
               alt="decorative icon one"
-              className="inline-block h-5 w-5 md:h-6 md:w-6 mx-1 align-middle" // Adjust size and alignment
+              className="inline-block h-7 w-9 md:h-10 md:w-10 mx-1 align-middle" // Adjust size and alignment
             />
-            Specialist, I Aim to Push the
-            Boundaries of Creativity. With a Background in analytics
+            Specialist, I Aim to Push the <br></br>
+            Boundaries of Creativity. With a Background in analytics<br></br>
             and Digital
             {/* Inline image for your second icon */}
             <img
               src="/two.png" // Assumes two.png is in the public folder
               alt="decorative icon two"
-              className="inline-block h-5 w-5 md:h-6 md:w-6 mx-1 align-middle" // Adjust size and alignment
+              className="inline-block h-5 w-15 md:h-10 md:w-30 mx-1 align-middle" // Adjust size and alignment
             />
-            Media, I've Been Able to Merge These
+            Media, I've Been Able to Merge These<br></br>
             Worlds for measurable impact.
           </p>
         </div>
