@@ -1,15 +1,10 @@
-// ========================================================================
-// FILE: /src/components/sections/Portfolio.jsx
-// ========================================================================
-// Portfolio section with added pre-title using accent color.
-// Existing complex background and gradient main title are preserved.
-// ========================================================================
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import CircularGallery from '../common/CircularGallary'; // Assuming this component exists and is functional
 
 const Portfolio = () => {
-  // --- Style Definitions for new elements ---
+  
   const styles = {
     preTitleIcon: "h-4 w-4 mr-2",
     preTitleText: "text-gray-600", // Accent color for the pre-title

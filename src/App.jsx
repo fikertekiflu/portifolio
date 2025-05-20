@@ -16,6 +16,7 @@ import Skills from './components/Section/Skills';
 import WorkProcess from './components/Section/WorkProcess'; 
 import FAQ from './components/Section/FAQ'; 
 import Testimonials from './components/Section/Testimonials'; 
+import Best from './components/Section/best'; 
 // import Footer from './components/layout/Footer'; // We'll create this later
 
 
@@ -86,6 +87,7 @@ function App() {
       <main className={`flex-grow `}>
         <Home />
         <About />
+        <Best />
         <Portfolio />
         <Services />
         <Skills />
