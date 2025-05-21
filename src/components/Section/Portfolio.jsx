@@ -40,7 +40,7 @@ const Portfolio = () => {
   return (
     <section
       id="portfolio"
-      className={`py-20 md:py-28 ${styles.sectionBg} overflow-hidden px-0`}
+      className={` ${styles.sectionBg} overflow-hidden px-0`}
     >
       <motion.div
         className="mx-auto container-responsive"
@@ -72,13 +72,7 @@ const Portfolio = () => {
           Explore My Work
         </motion.h2>
 
-        {/* Introductory Text */}
-        <motion.p
-          className={`text-lg md:text-xl ${styles.textContent} leading-relaxed max-w-2xl mx-auto mb-12 md:mb-16 text-center`}
-          variants={textContentVariants}
-        >
-          Here's a selection of projects that showcase my skills and passion for creating impactful digital solutions. Dive in and explore!
-        </motion.p>
+
 
         {/* Full-width Gallery Container */}
         <motion.div 

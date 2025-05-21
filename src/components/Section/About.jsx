@@ -33,7 +33,7 @@ const About = () => {
         animate={isLoaded ? "visible" : "hidden"}
       >
         {/* Text Block (from your Figma image_1fc8ac.png) */}
-        <div className=" mx-auto px-10 text-center">
+        <div className=" mx-auto px-10">
           {/*
             The "About Mahder" title is part of the Hero section in the overall design (image_1f5fcf.png).
             This component focuses on the paragraph block below it.
