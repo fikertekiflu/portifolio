@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-// No need for react-icons/lu for this specific design
 
 const About = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Simple delay for animation trigger.
-    // For scroll-triggered animation, use Intersection Observer.
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
     return () => clearTimeout(timer);
   }, []);
 
-  // Animation variants
   const sectionVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut', delay: 0.2 } },
@@ -22,39 +18,36 @@ const About = () => {
 
   return (
     <section
-      id="about" // For single-page navigation
-      className="py-20 md:py-30 bg-white dark:bg-gray-900 font-sans overflow-hidden " // Light background
+      id="about"
+      className="py-20 md:py-30 bg-white dark:bg-gray-900 font-sans overflow-hidden"
     >
       <motion.div
-        className="container-responsive mx-auto "
+        className="container-responsive mx-auto"
         variants={sectionVariants}
         initial="hidden"
-        // Animate when isLoaded is true (or use a scroll trigger hook for on-scroll animation)
         animate={isLoaded ? "visible" : "hidden"}
       >
-        {/* Text Block (from your Figma image_1fc8ac.png) */}
-        <div className=" mx-auto ">
-          
-    
-
-          <p className="text-lg md:text-3xl  text-bold lg:text-4xl text-gray-700 dark:text-gray-300 leading-relaxed md:leading-loose">
+        <div className="mx-auto">
+          <p 
+            className="text-lg md:text-3xl lg:text-4xl text-gray-700 dark:text-gray-300 
+                      leading-relaxed md:leading-loose font-bold tracking-wide"
+            style={{ wordSpacing: '0.25em' }}
+          >
             As a Digital Marketing
-            {/* Inline image for your first icon */}
             <img
-              src="/one.png" // Assumes one.png is in the public folder
+              src="/one.png"
               alt="decorative icon one"
-              className="inline-block h-7 w-9 md:h-10 md:w-10 mx-1 align-middle" // Adjust size and alignment
+              className="inline-block h-9 w-11 md:h-12 md:w-14 mx-3 align-middle"
             />
-            Specialist, I Aim to Push the <br></br>
-            Boundaries of Creativity. With a Background in analytics<br></br>
+            Specialist, I Aim to Push the <br />
+            Boundaries of Creativity. With a Background in analytics<br />
             and Digital
-            {/* Inline image for your second icon */}
             <img
-              src="/two.png" // Assumes two.png is in the public folder
+              src="/two.png"
               alt="decorative icon two"
-              className="inline-block h-5 w-15 md:h-10 md:w-30 mx-1 align-middle" // Adjust size and alignment
+              className="inline-block h-7 w-20 md:h-12 md:w-32 mx-3 align-middle"
             />
-            Media, I've Been Able to Merge These<br></br>
+            Media, I've Been Able to Merge These<br />
             Worlds for measurable impact.
           </p>
         </div>

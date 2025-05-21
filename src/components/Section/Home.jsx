@@ -55,13 +55,13 @@ const Home = () => { // Renamed to Home to match user's file name
           variants={textVariants}
           // Added some top padding to the text to push it down relative to the viewport top,
           // giving more space for the top part of the background image.
-          className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-800 mt-12 dark:text-white mb-32 md:mb-16 leading-tight pt-36 md:pt-46"
+          className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-800 mt-16 dark:text-white mb-36 md:mb-16 leading-tight pt-36 md:pt-46"
         >
           About Mahder
         </motion.h1>
 
         {/* Main Image - Rectangular as per Figma */}
-        <motion.div variants={imageVariants} className="mt-16 md:mt-20">
+        <motion.div variants={imageVariants} className="mt-20 md:mt-20">
           <img
             src="/Image.png" // Your main image from public folder
             alt="Mahder Halie" // Updated alt text
