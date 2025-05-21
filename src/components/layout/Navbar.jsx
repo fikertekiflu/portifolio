@@ -38,7 +38,7 @@ const Navbar = () => {
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 font-sans">
-      <div className="container mx-auto px-6 py-5 flex justify-between items-center">
+      <div className="px-24 mx-auto  py-5 flex justify-between items-center">
         {/* Logo/Name */}
         <Link to="/" className="cursor-pointer">
           <Logo />
