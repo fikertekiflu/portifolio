@@ -64,10 +64,10 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className={`py-20 md:py-28  section-padding overflow-hidden `}
+      className={`py-20 md:py-28  overflow-hidden `}
     >
       <motion.div
-        className="container-responsive mx-auto text-center px-4"
+        className="container-responsive mx-auto text-center "
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
@@ -98,7 +98,7 @@ const Skills = () => {
 
       {/* Logos Carousel Container */}
       <motion.div
-        className="mt-0 relative w-full" // Carousel takes full width
+        className="mt-0 relative container-responsive" // Carousel takes full width
         variants={carouselContainerVariants}
         initial="hidden"
         whileInView="visible"

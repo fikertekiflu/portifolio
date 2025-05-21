@@ -112,7 +112,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="lg:px-36  dark:bg-gray-900">
+    <section className="  dark:bg-gray-900 container-responsive">
       
               {/* Pre-title with Icon */}
               <motion.div 

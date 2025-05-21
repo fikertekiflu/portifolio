@@ -3,32 +3,8 @@
   height: 100%;
   overflow: hidden;
   cursor: grab;
-  /* Add these new properties */
-  transform: scale(0.85);
-  transform-origin: center;
-  padding: 20px 0;
 }
 
 .circular-gallery:active {
   cursor: grabbing;
-}
-
-/* Add these new rules to control image size */
-.circular-gallery img {
-  max-height: 200px !important;  /* Adjust this value as needed */
-  width: auto !important;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-/* Optional: Add media query for mobile */
-@media (max-width: 768px) {
-  .circular-gallery {
-    transform: scale(0.75);
-    padding: 15px 0;
-  }
-  
-  .circular-gallery img {
-    max-height: 150px !important;
-  }
 }
