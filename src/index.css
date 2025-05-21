@@ -8,15 +8,6 @@
 @tailwind utilities;
 
 /* ------------------------------------------------------------------------ */
-/* Base HTML and Body Styles                                                */
-/* ------------------------------------------------------------------------ */
-/* index.css */
-/* * {
-  cursor: url('https://ani.cursors-4u.net/cursors/cur-13/cur1160.ani'),
-          url('https://ani.cursors-4u.net/cursors/cur-13/cur1160.png'),
-          auto !important;
-} */
-
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -35,20 +26,26 @@
 /* Custom Component Styles                                                  */
 /* ------------------------------------------------------------------------ */
 @layer components {
-  .section-padding {
-    @apply px-6 py-16 md:px-12 md:py-24 lg:px-20 lg:py-32;
-  }
   .container-responsive {
-    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full;
+    max-width: 1440px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
-  .btn-custom-primary {
-    @apply inline-block bg-brand-primary text-white font-semibold py-3 px-8 rounded-lg shadow-md 
-           hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-brand-primary 
-           focus:ring-opacity-60 transition-all duration-200 ease-in-out;
+
+  @media (max-width: 768px) {
+    .container-responsive {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
   }
 }
 
-/* ------------------------------------------------------------------------ */
+/* btn-custom-primary {
+    @apply inline-block bg-brand-primary text-white font-semibold py-3 px-8 rounded-lg shadow-md 
+           hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-brand-primary 
+           focus:ring-opacity-60 transition-all duration-200 ease-in-out;
+  }------------------------------------------------------------------------ */
 /* Custom Scrollbar Styles                                                  */
 /* ------------------------------------------------------------------------ */
 ::-webkit-scrollbar {
