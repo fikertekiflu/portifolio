@@ -64,7 +64,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className={`py-16 md:py-24  section-padding overflow-hidden `}
+      className={`py-20 md:py-28  section-padding overflow-hidden `}
     >
       <motion.div
         className="container-responsive mx-auto text-center px-4"
@@ -105,7 +105,7 @@ const Skills = () => {
         viewport={{ once: true, amount: 0.1 }}
       >
         {/* Mask for fading edges (styling primarily in CSS) */}
-        <div className="logo-carousel-mask"> {/* Ensure this mask has appropriate height */}
+        <div className="logo-carousel-mask h-32"> {/* Ensure this mask has appropriate height */}
           <div className="flex items-center animate-scroll-logos">
             {duplicatedSkillItems.map((skill, index) => (
               // Each item is now just the image with margin for spacing
@@ -120,7 +120,7 @@ const Skills = () => {
                   h-10 sm:h-12 md:h-14 w-auto object-contain flex-shrink-0
                   mx-3 md:mx-5 
                   transition-transform duration-300 ease-in-out
-                  transform hover:scale-102
+                  transform hover
                 "
               />
             ))}

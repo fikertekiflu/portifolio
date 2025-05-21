@@ -88,6 +88,23 @@ const FAQItem = ({ item, isOpen, onClick }) => (
 );
 
 const FAQ = () => {
+
+  const styles = {
+    
+    preTitleText: "text-gray-500 dark:text-gray-400", 
+    preTitleIcon: "h-4 w-4 mr-2", 
+    mainTitle: "text-gray-900 dark:text-gray-50",
+    // Light gray line color
+  };
+  const textContentVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' },
+    },
+  };
+
   const [openId, setOpenId] = useState(null);
 
   const handleClick = (id) => {
@@ -95,15 +112,28 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-28 px-32 md:px-36 lg:px-36  dark:bg-gray-900">
-      <div className="mb-16">
-        <p className="text-sm font-semibold text-brand-primary uppercase tracking-wider mb-2">
-          FAQ
-        </p>
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
-          Frequently Asked Questions
-        </h2>
-      </div>
+    <section className="lg:px-36  dark:bg-gray-900">
+      
+              {/* Pre-title with Icon */}
+              <motion.div 
+                className="flex items-center justify-center mb-3" 
+                variants={textContentVariants} 
+              >
+                <img 
+                  src="/first.svg" 
+                  alt="" 
+                  className={styles.preTitleIcon} 
+                />
+                <p className={`text-xs font-medium ${styles.preTitleText} uppercase tracking-widest`}>
+                  FAQ
+                </p>
+              </motion.div>
+              <motion.h2
+                        className={`text-4xl sm:text-5xl font-semibold ${styles.mainTitle} mb-16 md:mb-20 text-center tracking-tight`}
+                        variants={textContentVariants}
+                      >
+                       Frequently asked questions
+                      </motion.h2>
 
       <div className="flex flex-col md:flex-row gap-10">
         <div className="flex-1">
