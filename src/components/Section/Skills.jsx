@@ -28,7 +28,7 @@ const duplicatedSkillItems = [...skillItemsData, ...skillItemsData, ...skillItem
 const Skills = () => {
   // --- Modern Color & Style Definitions ---
   const styles = {
-    sectionBg: "bg-gray-50 dark:bg-gray-900",
+    
     preTitleIcon: "h-3.5 w-3.5 mr-1.5",
     subHeadlineText: "text-indigo-600 dark:text-indigo-400",
     mainHeadline: "text-gray-800 dark:text-white",
@@ -64,7 +64,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className={`py-16 md:py-24 ${styles.sectionBg} section-padding overflow-hidden`}
+      className={`py-16 md:py-24  section-padding overflow-hidden `}
     >
       <motion.div
         className="container-responsive mx-auto text-center px-4"
@@ -117,10 +117,10 @@ const Skills = () => {
                 // Reduced horizontal margin (mx-3 or mx-4)
                 // Adjusted logo height
                 className="
-                  h-8 sm:h-10 md:h-12 w-auto object-contain flex-shrink-0
+                  h-10 sm:h-12 md:h-14 w-auto object-contain flex-shrink-0
                   mx-3 md:mx-5 
                   transition-transform duration-300 ease-in-out
-                  transform hover:scale-110
+                  transform hover:scale-102
                 "
               />
             ))}

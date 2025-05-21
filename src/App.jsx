@@ -34,14 +34,15 @@ function App() {
       <div className="w-full bg-brand-backgroundLight">
         <div className="container-responsive">
           <Navbar />
-          <Home />
+          
         </div>
       </div>
 
       {/* Main content with fixed padding */}
-      <main className="flex-grow bg-brand-backgroundLight">
+      <main className="flex-grow }">
+        <Home />
         <div className="container-responsive">
-        
+          
           <About />
           <Best />
           <Skills />

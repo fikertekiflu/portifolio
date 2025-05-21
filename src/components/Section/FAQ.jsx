@@ -95,7 +95,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-28 px-32 md:px-36 lg:px-36 bg-gray-50 dark:bg-gray-900">
+    <section className="py-28 px-32 md:px-36 lg:px-36  dark:bg-gray-900">
       <div className="mb-16">
         <p className="text-sm font-semibold text-brand-primary uppercase tracking-wider mb-2">
           FAQ

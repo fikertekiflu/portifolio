@@ -45,7 +45,7 @@ const Portfolio = () => {
   return (
     <section
       id="portfolio"
-      className="py-20 md:py-32 bg-brand-backgroundSubtle section-padding"
+      className="py-20 md:py-32  section-padding"
       // Using theme colors. Adjust bg-brand-backgroundSubtle or use bg-brand-backgroundLight
     >
       <motion.div
@@ -82,7 +82,7 @@ const Portfolio = () => {
             {/* The background of this div can be styled if the gallery itself is transparent */}
             {/* e.g., className="bg-brand-backgroundLight shadow-xl rounded-lg" */}
             <CircularGallery 
-              bend={3} 
+              bend={4} 
               textColor="#000000" // White text as specified
               borderRadius={0.05} 
               // Add other props your CircularGallery component might need

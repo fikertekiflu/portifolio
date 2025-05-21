@@ -23,7 +23,7 @@ const About = () => {
   return (
     <section
       id="about" // For single-page navigation
-      className="py-16 md:py-24 bg-white dark:bg-gray-900 font-sans overflow-hidden" // Light background
+      className="py-20 md:py-30 bg-white dark:bg-gray-900 font-sans overflow-hidden" // Light background
     >
       <motion.div
         className="container mx-auto px-6"
@@ -33,7 +33,7 @@ const About = () => {
         animate={isLoaded ? "visible" : "hidden"}
       >
         {/* Text Block (from your Figma image_1fc8ac.png) */}
-        <div className=" mx-auto ">
+        <div className=" mx-auto px-10 text-center">
           {/*
             The "About Mahder" title is part of the Hero section in the overall design (image_1f5fcf.png).
             This component focuses on the paragraph block below it.
@@ -46,7 +46,7 @@ const About = () => {
           </h2>
           */}
 
-          <p className="text-lg md:text-6xl  text-bold lg:text-5xl text-gray-700 dark:text-gray-300 leading-relaxed md:leading-loose">
+          <p className="text-lg md:text-3xl  text-bold lg:text-4xl text-gray-700 dark:text-gray-300 leading-relaxed md:leading-loose">
             As a Digital Marketing
             {/* Inline image for your first icon */}
             <img

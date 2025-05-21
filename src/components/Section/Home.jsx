@@ -36,19 +36,13 @@ const Home = () => { // Renamed to Home to match user's file name
     // Hero section container
     <section
       id="home" // For potential single-page navigation
-      className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-20 font-sans overflow-hidden"
+      className="relative min-h-screen  h-full w-full flex flex-col items-center justify-center text-center px-6 py-20 font-sans overflow-hidden"
       style={{
         backgroundImage: "url('/b.png')", // Assumes bg.png is in public folder
         backgroundSize: 'cover',
-        // Adjusted backgroundPosition to be slightly lower.
-        // You can use 'center top', 'center 20%', 'center 80px' etc.
-        // 'center 60%' means the center of the image is at 60% from the top of the container.
-         // Try adjusting this value (e.g., 'center 70%', 'center bottom')
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Optional: Add a subtle overlay for better text readability if bg.png is very busy */}
-      {/* <div className="absolute inset-0 bg-black opacity-20"></div> */}
 
       <motion.div
         className="relative z-10 max-w-4xl w-full mx-auto" // z-10 to be above overlay
