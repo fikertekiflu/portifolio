@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
+// Portfolio items data (URL for id:4 is corrected)
 const portfolioItemsData = [
-  { id: 1, type: 'image', image: `https://picsum.photos/seed/img1_tall_left_v2/500/800?grayscale&blur=1`, title: 'Digital Transformation Strategy' },
-  { id: 2, type: 'image', image: `https://picsum.photos/seed/img2_top_mid_v2/800/500?grayscale&blur=1`, title: 'E-commerce Platform Build' },
-  { id: 3, type: 'image', image: `https://picsum.photos/seed/21/800/600?grayscale`, title: 'E-commerce Platform Build' },
-  { id: 4, type: 'image', image: `https://picsum.photos/seed/10/800/600?grayscaleblure&blur=1`, title: 'E-commerce Platform Build' },
-  { id: 5, type: 'image', image: `https://picsum.photos/seed/img3_bot_left_v2/800/500?grayscale&blur=1`, title: 'Mobile App UX Overhaul' },
-  { id: 6, type: 'image', image: `https://picsum.photos/seed/img4_bot_mid_v2/800/500?grayscale&blur=1`, title: 'Interactive Data Visualization' },
-  { id: 7, type: 'image', image: `https://picsum.photos/seed/img5_bot_right_v2/800/500?grayscale&blur=1`, title: 'Brand Storytelling Campaign' },
+  { id: 1, type: 'image', image: `https://picsum.photos/seed/img1_tall_left_v2/500/800?grayscale&blur=1`, title: 'Digital Transformation Strategy' }, // For Left Tall
+  { id: 2, type: 'image', image: `https://picsum.photos/seed/img2_top_mid_v2/800/500?grayscale&blur=1`, title: 'E-commerce Platform Build' },    // For Mid Top
+  { id: 3, type: 'image', image: `https://picsum.photos/seed/21/800/600?grayscale`, title: 'UX Research Project' },                         // For Right Tall (black box)
+  { id: 4, type: 'image', image: `https://picsum.photos/seed/10/800/600?grayscale&blur=1`, title: 'E-commerce Platform Build' }, // Originally itemMidRightPlaceholder - THIS WILL BE UNUSED to match the image
+  { id: 5, type: 'image', image: `https://picsum.photos/seed/img3_bot_left_v2/800/500?grayscale&blur=1`, title: 'Mobile App UX Overhaul' },      // For Left Bottom
+  { id: 6, type: 'image', image: `https://picsum.photos/seed/img4_bot_mid_v2/800/500?grayscale&blur=1`, title: 'Interactive Data Visualization' },// For Mid Bottom
+  { id: 7, type: 'image', image: `https://picsum.photos/seed/img5_bot_right_v2/800/500?grayscale&blur=1`, title: 'Brand Storytelling Campaign' }, // For Right Bottom
 ];
 
 const PortfolioItem = ({ item, className = '' }) => {
@@ -71,71 +72,89 @@ const Best = () => {
     }),
   };
 
-  const [
-    itemTallLeft,
-    itemTopMid,
-    itemTopRightPlaceholder,
-    itemMidRightPlaceholder,
-    itemBotLeft,
-    itemBotMid,
-    itemBotRight
-  ] = portfolioItemsData;
-
   return (
     <section id="portfolio" className="py-4 md:py-8 bg-white dark:bg-gray-900 overflow-hidden">
       <motion.div
-        className="container-responsive"
+        className="container-responsive" // Or your preferred container class e.g., mx-auto px-4
         variants={sectionVariants}
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
       >
-        <div className="grid grid-cols-1 md:grid-cols-[0.6fr_1fr_1fr] md:grid-rows-3 gap-1.5 md:gap-2.5 h-[500px]">
-          {/* Column 1 */}
-          <motion.div custom={0} variants={gridItemVariants} className="md:row-span-2">
-            <PortfolioItem item={itemTallLeft} className="h-full" />
+        {/* 3-column grid. First column is now 0.5fr to make it thinner. */}
+        <div className="grid grid-cols-1 md:grid-cols-[0.5fr_1fr_1fr] md:grid-rows-3 gap-1.5 md:gap-2.5 h-[500px]">
+          
+          {/* Column 1, Row 1 & 2 (Left Tall Image - now thinner) */}
+          <motion.div 
+            custom={0} 
+            variants={gridItemVariants} 
+            className="md:col-start-1 md:row-start-1 md:row-span-2"
+          >
+            <PortfolioItem item={portfolioItemsData[0]} className="h-full" />
           </motion.div>
 
-          {/* Column 2 */}
-          <motion.div custom={1} variants={gridItemVariants}>
-            <PortfolioItem item={itemTopMid} className="h-full" />
+          {/* Column 2, Row 1 (Middle Top Image) */}
+          <motion.div 
+            custom={1} 
+            variants={gridItemVariants} 
+            className="md:col-start-2 md:row-start-1"
+          >
+            <PortfolioItem item={portfolioItemsData[1]} className="h-full" />
           </motion.div>
 
-          {/* Column 3 */}
-          <motion.div custom={2} variants={gridItemVariants}>
-            <PortfolioItem item={itemTopRightPlaceholder} className="h-full" />
+          {/* Column 3, Row 1 & 2 (Right Tall Image - black box) */}
+          <motion.div 
+            custom={2} 
+            variants={gridItemVariants} 
+            className="md:col-start-3 md:row-start-1 md:row-span-2"
+          >
+            <PortfolioItem item={portfolioItemsData[2]} className="h-full" />
+          </motion.div>
+          
+          {/* Column 1, Row 3 (Left Bottom Image) */}
+          <motion.div 
+            custom={3} 
+            variants={gridItemVariants} 
+            className="md:col-start-1 md:row-start-3"
+          >
+            <PortfolioItem item={portfolioItemsData[4]} className="h-full" />
           </motion.div>
 
-          {/* Title Block */}
+          {/* Title Block: Column 2, Row 2 */}
           <motion.div
-            custom={3}
+            custom={4} 
             variants={gridItemVariants}
             className="md:col-start-2 md:row-start-2 flex flex-col items-center justify-center p-2"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-1">
               Portfolios
             </h2>
-            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center">
               I design impactful digital experiences
             </p>
           </motion.div>
-
-          {/* Middle Right */}
-          <motion.div custom={4} variants={gridItemVariants} className="md:col-start-3 md:row-start-2">
-            <PortfolioItem item={itemMidRightPlaceholder} className="h-full" />
-          </motion.div>
           
-          {/* Bottom Row */}
-          <motion.div custom={5} variants={gridItemVariants} className="md:row-start-3 md:col-start-1">
-            <PortfolioItem item={itemBotLeft} className="h-full" />
+          {/* Column 2, Row 3 (Middle Bottom Image) */}
+          <motion.div 
+            custom={5} 
+            variants={gridItemVariants} 
+            className="md:col-start-2 md:row-start-3"
+          >
+            <PortfolioItem item={portfolioItemsData[5]} className="h-full" />
           </motion.div>
 
-          <motion.div custom={6} variants={gridItemVariants} className="md:row-start-3 md:col-start-2">
-            <PortfolioItem item={itemBotMid} className="h-full" />
+          {/* Column 3, Row 3 (Right Bottom Image) */}
+          <motion.div 
+            custom={6} 
+            variants={gridItemVariants} 
+            className="md:col-start-3 md:row-start-3"
+          >
+            <PortfolioItem item={portfolioItemsData[6]} className="h-full" />
           </motion.div>
 
-          <motion.div custom={7} variants={gridItemVariants} className="md:row-start-3 md:col-start-3">
-            <PortfolioItem item={itemBotRight} className="h-full" />
-          </motion.div>
+          {/* The extra motion.div that attempted col-start-4 and portfolioItemsData[7] has been removed 
+              as it doesn't fit the 3-column layout depicted in the image and uses an out-of-bounds index. 
+              The image shows 3 items in the bottom row. */}
+
         </div>
       </motion.div>
     </section>
