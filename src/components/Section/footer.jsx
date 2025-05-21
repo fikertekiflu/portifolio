@@ -75,42 +75,51 @@ function Footer() {
                 </section>
 
                 {/* Container for MAHDER HAILE and Colored Section */}
-                <div className="flex items-center pt-[23px] pb-10 ">
+                <div className="flex  items-center  pt-[23px] pb-10 ">
                     {/* Left Side: MAHDER HAILE */}
-                    <div className="inline-flex flex-col items-start ">
-                        <h1 className="relative w-fit font-['Inter'] font-bold text-white text-[56px] leading-[68.8px] tracking-[-2.96px]">
-                            MAHDER <br />
-                            HAILE
+                       <div className="inline-flex flex-col space-y-2 items-start">
+                        {/* MAHDER part of the heading */}
+                        <h1 className="relative w-fit font-['Inter'] font-bold text-white text-[56px] leading-[68.8px] tracking-[-2.96px] mb-0">
+                            MAHDER
                         </h1>
-                        {/* Social Icons Container */}
-                        <div className="flex space-x-4 mt-4">
-                            {/* Email Icon */}
-                            <a href="mailto:mahderhaile21@gmail.com" className="text-white hover:text-blue-400 transition-colors duration-300">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                    <polyline points="22,6 12,13 2,6"></polyline>
-                                </svg>
-                            </a>
-                            {/* LinkedIn Icon */}
-                            <a href="https://www.linkedin.com/in/mahder-haile-abera/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400 transition-colors duration-300">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                    <circle cx="4" cy="4" r="2"></circle>
-                                </svg>
-                            </a>
+                        {/* HAILE and Social Icons - now in a flex row */}
+                        <div className="flex items-center mt-[-10px]"> {/* Adjusted top margin for closer alignment */}
+                            <h1 className="relative w-fit font-['Inter'] font-bold text-white text-[56px] leading-[68.8px] tracking-[-2.96px] mb-0">
+                                HAILE
+                            </h1>
+                            {/* Social Icons Container - now inline with HAILE */}
+                            <div className="flex space-x-2 ml-2 "> {/* Added ml-4 for spacing from HAILE */}
+  {/* Email Icon - adjusted size */}
+                                <a href="mailto:mahderhaile21@gmail.com" className="text-white hover:text-blue-400 transition-colors duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-[56px] w-[56px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </a>
+                                 {/* LinkedIn Icon - adjusted size */}
+                                <a href="https://www.linkedin.com/in/mahder-haile-abera/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400 transition-colors duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-[56px] w-[56px]" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                        <rect x="2" y="9" width="4" height="12"></rect>
+                                        <circle cx="4" cy="4" r="2"></circle>
+                                    </svg>
+                                </a>
+
+
+
+                            </div>
                         </div>
                     </div>
 
                     {/* Colored Background Section with Marquee */}
                     <div
-                        className="relative overflow-hidden flex-grow rounded-lg bg-[url('/backcolor.png')] bg-cover bg-center"
+                        className="relative overflow-hidden ml-[-170px] flex-grow rounded-lg bg-[url('/backcolor.png')] bg-cover bg-center"
                         style={{
                             height: '600px',
                         }}
                     >
                         {/* Marquee Text Container - WRAPPER FOR OVERFLOW */}
-                        <div className="absolute top-[30%] w-full flex justify-center items-center">
+                        <div className="absolute top-[25%] right-16 w-full flex justify-center items-center ml-20 mr">
                             <div className="marquee-parent-wrapper"> {/* This wrapper defines the visible area */}
                                 <div className="marquee-container"> {/* This is the animated element */}
                                     {marqueeTexts.map((item, index) => (
