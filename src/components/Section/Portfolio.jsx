@@ -66,7 +66,7 @@ const Portfolio = () => {
 
         {/* Main Title */}
         <motion.h2
-          className={`text-4xl sm:text-5xl font-semibold ${styles.mainTitle} mb-16 md:mb-20 text-center tracking-tight`}
+          className={`text-4xl sm:text-5xl font-semibold ${styles.mainTitle} mb-8 md:mb-20 text-center tracking-tight`}
           variants={textContentVariants}
         >
           Explore My Work

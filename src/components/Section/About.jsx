@@ -23,28 +23,19 @@ const About = () => {
   return (
     <section
       id="about" // For single-page navigation
-      className="py-20 md:py-30 bg-white dark:bg-gray-900 font-sans overflow-hidden" // Light background
+      className="py-20 md:py-30 bg-white dark:bg-gray-900 font-sans overflow-hidden " // Light background
     >
       <motion.div
-        className="container mx-auto px-6"
+        className="container-responsive mx-auto "
         variants={sectionVariants}
         initial="hidden"
         // Animate when isLoaded is true (or use a scroll trigger hook for on-scroll animation)
         animate={isLoaded ? "visible" : "hidden"}
       >
         {/* Text Block (from your Figma image_1fc8ac.png) */}
-        <div className=" mx-auto px-10">
-          {/*
-            The "About Mahder" title is part of the Hero section in the overall design (image_1f5fcf.png).
-            This component focuses on the paragraph block below it.
-            If you intended "About Mahder" to be a heading specifically for this text block,
-            you can uncomment and style the h2 below.
-          */}
-          {/*
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-8">
-            About Me
-          </h2>
-          */}
+        <div className=" mx-auto ">
+          
+    
 
           <p className="text-lg md:text-3xl  text-bold lg:text-4xl text-gray-700 dark:text-gray-300 leading-relaxed md:leading-loose">
             As a Digital Marketing
