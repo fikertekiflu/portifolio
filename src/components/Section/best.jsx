@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-// Portfolio items data (URL for id:4 is corrected)
+// Updated Portfolio items data for the revised 7-image, 4-column layout
 const portfolioItemsData = [
-  { id: 1, type: 'image', image: `https://picsum.photos/seed/img1_tall_left_v2/500/800?grayscale&blur=1`, title: 'Digital Transformation Strategy' }, // For Left Tall
-  { id: 2, type: 'image', image: `https://picsum.photos/seed/img2_top_mid_v2/800/500?grayscale&blur=1`, title: 'E-commerce Platform Build' },    // For Mid Top
-  { id: 3, type: 'image', image: `https://picsum.photos/seed/21/800/600?grayscale`, title: 'UX Research Project' },                         // For Right Tall (black box)
-  { id: 4, type: 'image', image: `https://picsum.photos/seed/10/800/600?grayscale&blur=1`, title: 'E-commerce Platform Build' }, // Originally itemMidRightPlaceholder - THIS WILL BE UNUSED to match the image
-  { id: 5, type: 'image', image: `https://picsum.photos/seed/img3_bot_left_v2/800/500?grayscale&blur=1`, title: 'Mobile App UX Overhaul' },      // For Left Bottom
-  { id: 6, type: 'image', image: `https://picsum.photos/seed/img4_bot_mid_v2/800/500?grayscale&blur=1`, title: 'Interactive Data Visualization' },// For Mid Bottom
-  { id: 7, type: 'image', image: `https://picsum.photos/seed/img5_bot_right_v2/800/500?grayscale&blur=1`, title: 'Brand Storytelling Campaign' }, // For Right Bottom
+  // Item for C1R1-2 (Tall Left)
+  { id: 1, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c1_tall/400/600?grayscale&blur=1`, title: 'Strategic Design Initiative' },
+  // Item for C1R3 (Left Bottom)
+  { id: 2, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c1_short/600/400?grayscale&blur=1`, title: 'User Experience Audit' },
+  // Item for C2R1 (Column 2, Row 1)
+  { id: 3, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c2_r1/600/400?grayscale&blur=1`, title: 'Interactive Prototyping' },
+  // Item for C2R3 (Column 2, Row 3)
+  { id: 4, type: 'image', image: `https://picsum.photos/seed/8/800/600?grayscale`, title: 'Mobile-First Development' },
+  { id: 5, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c2_r3/600/400?grayscale&blur=1`, title: 'Mobile-First Development' },
+  // Item for C3R1-3 (Column 3, Tahttps://picsum.photos/seed/10/800/600?grayscale`, title: 'Brand Identity System' }, // Dark placeholder
+  // Item for C4R1-2 (Column 4, Tall)
+  { id: 6, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c4_tall/400/600?grayscale&blur=1`, title: 'E-commerce Optimization' },
+  // Item for C4R3 (Column 4, Row 3)
+  { id: 7, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c4_short/600/400?grayscale&blur=1`, title: 'Content Management System' },
 ];
 
 const PortfolioItem = ({ item, className = '' }) => {
+  // Check if item or item.image is missing or invalid
   if (!item || (item.type === 'image' && (typeof item.image !== 'string' || item.image.trim() === ''))) {
     return (
       <div className={`w-full h-full bg-gray-700 dark:bg-gray-800 rounded-lg shadow flex items-center justify-center text-gray-400 dark:text-gray-500 ${className}`}>
@@ -30,18 +38,21 @@ const PortfolioItem = ({ item, className = '' }) => {
       <img
         src={item.image}
         alt={item.title || 'Portfolio item'}
+        // Ensure image covers the container and maintains aspect ratio
         className="w-full h-full object-cover filter blur-sm group-hover:blur-none transition-all duration-300 ease-in-out transform group-hover:scale-105"
         loading="lazy"
         onError={(e) => {
-          e.target.onerror = null;
-          e.target.src = "https://placehold.co/600x400/7f1d1d/ffffff?text=Img+Error";
+          e.target.onerror = null; // Prevents looping if fallback also fails
+          e.target.src = "https://placehold.co/600x400/7f1d1d/ffffff?text=Img+Load+Error"; // Fallback image
         }}
       />
-      <div className="absolute bottom-1.5 left-1.5 bg-black/60 text-white text-[8px] md:text-[9px] font-bold p-1 rounded-sm z-10">
+      {/* "YA" Logo */}
+      <div className="absolute bottom-2 left-2 bg-black/60 text-white text-[10px] md:text-xs font-bold p-1.5 rounded-sm z-10">
         YA
       </div>
-      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-opacity duration-300 flex items-end p-2 z-10">
-        <h3 className="text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 transform translate-y-1.5 group-hover:translate-y-0">
+      {/* Hover effect to show title */}
+      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-opacity duration-300 flex items-end p-2.5 z-10">
+        <h3 className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 transform translate-y-2 group-hover:translate-y-0">
           {item.title || 'View Project'}
         </h3>
       </div>
@@ -49,111 +60,111 @@ const PortfolioItem = ({ item, className = '' }) => {
   );
 };
 
-const Best = () => {
+const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    // Simulate loading
     const timer = setTimeout(() => setIsLoaded(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
+  // Animation variants for the section
   const sectionVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { delay: 0.1 } },
+    visible: { opacity: 1, transition: { delay: 0.1, duration: 0.4 } },
   };
 
+  // Animation variants for grid items (staggered)
   const gridItemVariants = {
-    hidden: { opacity: 0, y: 10, scale: 0.98 },
-    visible: (i) => ({
+    hidden: { opacity: 0, y: 15, scale: 0.95 },
+    visible: (i) => ({ // `i` is the custom stagger index
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { delay: i * 0.05, duration: 0.3, ease: 'easeOut' },
+      transition: { delay: i * 0.07, duration: 0.35, ease: 'easeOut' },
     }),
   };
 
   return (
-    <section id="portfolio" className="py-4 md:py-8 bg-white dark:bg-gray-900 overflow-hidden">
+    <section id="portfolio" className=" px-4 py-6 md:py-10  bg-white dark:bg-gray-900 overflow-hidden  flex items-center">
       <motion.div
-        className="container-responsive" // Or your preferred container class e.g., mx-auto px-4
+        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl w-full"
         variants={sectionVariants}
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
       >
-        {/* 3-column grid. First column is now 0.5fr to make it thinner. */}
-        <div className="grid grid-cols-1 md:grid-cols-[0.5fr_1fr_1fr] md:grid-rows-3 gap-1.5 md:gap-2.5 h-[500px]">
+        {/* 4-column, 3-row grid. Grid height remains 600px. */}
+        <div className="grid grid-cols-1 md:grid-cols-[0.5fr_1fr_1fr_1fr] md:grid-rows-3 gap-2 md:gap-2.5 h-[600px]">
           
-          {/* Column 1, Row 1 & 2 (Left Tall Image - now thinner) */}
+          {/* Column 1: Two images */}
           <motion.div 
-            custom={0} 
+            custom={0} // Stagger index 0
             variants={gridItemVariants} 
-            className="md:col-start-1 md:row-start-1 md:row-span-2"
+            className="md:col-start-1 md:row-start-1 md:row-span-2" // C1R1-2
           >
             <PortfolioItem item={portfolioItemsData[0]} className="h-full" />
           </motion.div>
-
-          {/* Column 2, Row 1 (Middle Top Image) */}
           <motion.div 
-            custom={1} 
+            custom={1} // Stagger index 1
             variants={gridItemVariants} 
-            className="md:col-start-2 md:row-start-1"
+            className="md:col-start-1 md:row-start-3" // C1R3
           >
             <PortfolioItem item={portfolioItemsData[1]} className="h-full" />
           </motion.div>
 
-          {/* Column 3, Row 1 & 2 (Right Tall Image - black box) */}
+          {/* Column 2: Image, Text Block, Image */}
           <motion.div 
-            custom={2} 
+            custom={2} // Stagger index 2
             variants={gridItemVariants} 
-            className="md:col-start-3 md:row-start-1 md:row-span-2"
+            className="md:col-start-2 md:row-start-1" // C2R1
           >
             <PortfolioItem item={portfolioItemsData[2]} className="h-full" />
           </motion.div>
-          
-          {/* Column 1, Row 3 (Left Bottom Image) */}
-          <motion.div 
-            custom={3} 
-            variants={gridItemVariants} 
-            className="md:col-start-1 md:row-start-3"
-          >
-            <PortfolioItem item={portfolioItemsData[4]} className="h-full" />
-          </motion.div>
-
-          {/* Title Block: Column 2, Row 2 */}
           <motion.div
-            custom={4} 
+            custom={3} // Stagger index 3
             variants={gridItemVariants}
-            className="md:col-start-2 md:row-start-2 flex flex-col items-center justify-center p-2"
+            className="md:col-start-2 md:row-start-2 flex flex-col items-center justify-center p-3 bg-white dark:bg-gray-900 rounded-lg" // C2R2 (Text Block)
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-1">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-2 text-center">
               Portfolios
             </h2>
-            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center">
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 text-center">
               I design impactful digital experiences
             </p>
           </motion.div>
-          
-          {/* Column 2, Row 3 (Middle Bottom Image) */}
           <motion.div 
-            custom={5} 
+            custom={4} // Stagger index 4
             variants={gridItemVariants} 
-            className="md:col-start-2 md:row-start-3"
+            className="md:col-start-2 md:row-start-3" // C2R3
+          >
+            <PortfolioItem item={portfolioItemsData[3]} className="h-full" />
+          </motion.div>
+
+          {/* Column 3: Tall Image */}
+          <motion.div 
+            custom={5} // Stagger index 5
+            variants={gridItemVariants} 
+            className="md:col-start-3 md:row-start-1 md:row-span-3" // C3R1-3
+          >
+            <PortfolioItem item={portfolioItemsData[4]} className="h-full" />
+          </motion.div>
+          
+          {/* Column 4: Tall Image, Standard Image */}
+          <motion.div 
+            custom={6} // Stagger index 6
+            variants={gridItemVariants} 
+            className="md:col-start-4 md:row-start-1 md:row-span-2" // C4R1-2
           >
             <PortfolioItem item={portfolioItemsData[5]} className="h-full" />
           </motion.div>
-
-          {/* Column 3, Row 3 (Right Bottom Image) */}
           <motion.div 
-            custom={6} 
+            custom={7} // Stagger index 7
             variants={gridItemVariants} 
-            className="md:col-start-3 md:row-start-3"
+            className="md:col-start-4 md:row-start-3" // C4R3
           >
             <PortfolioItem item={portfolioItemsData[6]} className="h-full" />
           </motion.div>
-
-          {/* The extra motion.div that attempted col-start-4 and portfolioItemsData[7] has been removed 
-              as it doesn't fit the 3-column layout depicted in the image and uses an out-of-bounds index. 
-              The image shows 3 items in the bottom row. */}
 
         </div>
       </motion.div>
@@ -161,4 +172,4 @@ const Best = () => {
   );
 };
 
-export default Best;
+export default App;
