@@ -5,8 +5,8 @@ import CircularGallery from '../common/CircularGallary';
 const Portfolio = () => {
   const styles = {
     sectionBg: "bg-brand-backgroundLight dark:bg-gray-900",
-    preTitleText: "text-gray-500 dark:text-gray-400", 
-    preTitleIcon: "h-4 w-4 mr-2", 
+    preTitleText: "text-gray-500 dark:text-gray-400",
+    preTitleIcon: "h-4 w-4 mr-2",
     mainTitle: "text-gray-900 dark:text-gray-50",
     textContent: "text-gray-600 dark:text-gray-300"
   };
@@ -50,14 +50,14 @@ const Portfolio = () => {
         viewport={{ once: true, amount: 0.1 }}
       >
         {/* Pre-title with Icon */}
-        <motion.div 
-          className="flex items-center justify-center mb-3" 
-          variants={textContentVariants} 
+        <motion.div
+          className="flex items-center justify-center mb-3"
+          variants={textContentVariants}
         >
-          <img 
-            src="/first.svg" 
-            alt="" 
-            className={styles.preTitleIcon} 
+          <img
+            src="/first.svg"
+            alt=""
+            className={styles.preTitleIcon}
           />
           <p className={`text-xs font-medium ${styles.preTitleText} uppercase tracking-widest`}>
             Portfolio Showcase
@@ -75,7 +75,7 @@ const Portfolio = () => {
 
 
         {/* Full-width Gallery Container */}
-        <motion.div 
+        <motion.div
           className="w-full"
           variants={galleryVariants}
           initial="hidden"
@@ -83,8 +83,8 @@ const Portfolio = () => {
           viewport={{ once: true, amount: 0.25 }}
         >
           <div className="relative" style={{ height: 'clamp(500px, 60vh, 800px)' }}>
-            <CircularGallery 
-              bend={4} 
+            <CircularGallery
+              bend={4}
               textColor="#000000"
               borderRadius={0.05}
             />

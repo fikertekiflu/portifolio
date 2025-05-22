@@ -8,6 +8,7 @@ import WorkProcess from './components/Section/WorkProcess';
 import FAQ from './components/Section/FAQ';
 import Best from './components/Section/best';
 import Footer from './components/Section/footer';
+import Whatido from './components/Section/whatido'
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
       <div className="w-full bg-brand-backgroundLight">
         <div className="container-responsive">
           <Navbar />
-          
+
         </div>
       </div>
 
@@ -42,15 +43,17 @@ function App() {
       <main className="flex-grow }">
         <Home />
         <div className="container-responsive">
-          
+
           <About />
           <Best />
+          <Whatido/>
           <Skills />
           <Portfolio />
+
           <WorkProcess />
           <FAQ />
         </div>
-        
+
         {/* Full-width footer */}
         <div className="w-full">
           <Footer />

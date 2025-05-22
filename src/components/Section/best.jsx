@@ -87,42 +87,55 @@ const App = () => {
   };
 
   return (
-    <section id="portfolio" className=" px-4 py-6 md:py-10  bg-white dark:bg-gray-900 overflow-hidden  flex items-center">
+    <section id="portfolio" className="py-4 md:py-8 bg-white dark:bg-gray-900 overflow-hidden">
       <motion.div
         className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl w-full"
         variants={sectionVariants}
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
       >
-        {/* 4-column, 3-row grid. Grid height remains 600px. */}
-        <div className="grid grid-cols-1 md:grid-cols-[0.5fr_1fr_1fr_1fr] md:grid-rows-3 gap-2 md:gap-2.5 h-[600px]">
-          
-          {/* Column 1: Two images */}
-          <motion.div 
-            custom={0} // Stagger index 0
-            variants={gridItemVariants} 
-            className="md:col-start-1 md:row-start-1 md:row-span-2" // C1R1-2
+        {/* 3-column grid. First column is now 0.5fr to make it thinner. */}
+        <div className="grid grid-cols-1 md:grid-cols-[0.5fr_1fr_1fr] md:grid-rows-3 gap-1.5 md:gap-2.5 h-[500px]">
+
+          {/* Column 1, Row 1 & 2 (Left Tall Image - now thinner) */}
+          <motion.div
+            custom={0}
+            variants={gridItemVariants}
+            className="md:col-start-1 md:row-start-1 md:row-span-2"
           >
             <PortfolioItem item={portfolioItemsData[0]} className="h-full" />
           </motion.div>
-          <motion.div 
-            custom={1} // Stagger index 1
-            variants={gridItemVariants} 
-            className="md:col-start-1 md:row-start-3" // C1R3
+
+          {/* Column 2, Row 1 (Middle Top Image) */}
+          <motion.div
+            custom={1}
+            variants={gridItemVariants}
+            className="md:col-start-2 md:row-start-1"
           >
             <PortfolioItem item={portfolioItemsData[1]} className="h-full" />
           </motion.div>
 
-          {/* Column 2: Image, Text Block, Image */}
-          <motion.div 
-            custom={2} // Stagger index 2
-            variants={gridItemVariants} 
-            className="md:col-start-2 md:row-start-1" // C2R1
+          {/* Column 3, Row 1 & 2 (Right Tall Image - black box) */}
+          <motion.div
+            custom={2}
+            variants={gridItemVariants}
+            className="md:col-start-3 md:row-start-1 md:row-span-2"
           >
             <PortfolioItem item={portfolioItemsData[2]} className="h-full" />
           </motion.div>
+
+          {/* Column 1, Row 3 (Left Bottom Image) */}
           <motion.div
-            custom={3} // Stagger index 3
+            custom={3}
+            variants={gridItemVariants}
+            className="md:col-start-1 md:row-start-3"
+          >
+            <PortfolioItem item={portfolioItemsData[4]} className="h-full" />
+          </motion.div>
+
+          {/* Title Block: Column 2, Row 2 */}
+          <motion.div
+            custom={4}
             variants={gridItemVariants}
             className="md:col-start-2 md:row-start-2 flex flex-col items-center justify-center p-3 bg-white dark:bg-gray-900 rounded-lg" // C2R2 (Text Block)
           >
@@ -133,38 +146,28 @@ const App = () => {
               I design impactful digital experiences
             </p>
           </motion.div>
-          <motion.div 
-            custom={4} // Stagger index 4
-            variants={gridItemVariants} 
-            className="md:col-start-2 md:row-start-3" // C2R3
-          >
-            <PortfolioItem item={portfolioItemsData[3]} className="h-full" />
-          </motion.div>
 
-          {/* Column 3: Tall Image */}
-          <motion.div 
-            custom={5} // Stagger index 5
-            variants={gridItemVariants} 
-            className="md:col-start-3 md:row-start-1 md:row-span-3" // C3R1-3
-          >
-            <PortfolioItem item={portfolioItemsData[4]} className="h-full" />
-          </motion.div>
-          
-          {/* Column 4: Tall Image, Standard Image */}
-          <motion.div 
-            custom={6} // Stagger index 6
-            variants={gridItemVariants} 
-            className="md:col-start-4 md:row-start-1 md:row-span-2" // C4R1-2
+          {/* Column 2, Row 3 (Middle Bottom Image) */}
+          <motion.div
+            custom={5}
+            variants={gridItemVariants}
+            className="md:col-start-2 md:row-start-3"
           >
             <PortfolioItem item={portfolioItemsData[5]} className="h-full" />
           </motion.div>
-          <motion.div 
-            custom={7} // Stagger index 7
-            variants={gridItemVariants} 
-            className="md:col-start-4 md:row-start-3" // C4R3
+
+          {/* Column 3, Row 3 (Right Bottom Image) */}
+          <motion.div
+            custom={6}
+            variants={gridItemVariants}
+            className="md:col-start-3 md:row-start-3"
           >
             <PortfolioItem item={portfolioItemsData[6]} className="h-full" />
           </motion.div>
+
+          {/* The extra motion.div that attempted col-start-4 and portfolioItemsData[7] has been removed
+              as it doesn't fit the 3-column layout depicted in the image and uses an out-of-bounds index.
+              The image shows 3 items in the bottom row. */}
 
         </div>
       </motion.div>

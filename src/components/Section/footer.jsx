@@ -113,7 +113,7 @@ function Footer() {
 
                     {/* Colored Background Section with Marquee */}
                     <div
-                        className="relative overflow-hidden ml-[-170px] flex-grow rounded-lg bg-[url('/backcolor.png')] bg-cover bg-center"
+                        className="relative overflow-hidden ml-[-230px] flex-grow rounded-lg bg-[url('/backcolor.png')] bg-cover bg-center"
                         style={{
                             height: '600px',
                         }}
