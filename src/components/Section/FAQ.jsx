@@ -90,9 +90,9 @@ const FAQItem = ({ item, isOpen, onClick }) => (
 const FAQ = () => {
 
   const styles = {
-    
-    preTitleText: "text-gray-500 dark:text-gray-400", 
-    preTitleIcon: "h-4 w-4 mr-2", 
+
+    preTitleText: "text-gray-500 dark:text-gray-400",
+    preTitleIcon: "h-4 w-4 mr-2",
     mainTitle: "text-gray-900 dark:text-gray-50",
     // Light gray line color
   };
@@ -112,17 +112,17 @@ const FAQ = () => {
   };
 
   return (
-    <section className="  dark:bg-gray-900 container-responsive">
-      
+    <section className="  dark:bg-gray-900  container-responsive">
+
               {/* Pre-title with Icon */}
-              <motion.div 
-                className="flex items-center justify-center mb-3" 
-                variants={textContentVariants} 
+              <motion.div
+                className="flex items-center justify-center  mb-3"
+                variants={textContentVariants}
               >
-                <img 
-                  src="/first.svg" 
-                  alt="" 
-                  className={styles.preTitleIcon} 
+                <img
+                  src="/first.svg"
+                  alt=""
+                  className={styles.preTitleIcon}
                 />
                 <p className={`text-xs font-medium ${styles.preTitleText} uppercase tracking-widest`}>
                   FAQ

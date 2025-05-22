@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion'; // For animations
 
-const Home = () => { // Renamed to Home to match user's file name
+const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -31,20 +31,23 @@ const Home = () => { // Renamed to Home to match user's file name
     visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: 'easeOut', delay: 0.4 } },
   };
 
-
   return (
     // Hero section container
     <section
       id="home" // For potential single-page navigation
-      className="relative min-h-screen  h-full w-full flex flex-col items-center justify-center text-center px-6 py-20 font-sans overflow-hidden"
+      // Using the reduced min-heights to prevent large empty space at the bottom of the section
+      className="relative md:min-h-[880px] min-h-[73vh] w-full flex flex-col items-center justify-center text-center px-6 py-10 font-sans overflow-hidden"
       style={{
         backgroundImage: "url('/b.png')", // Assumes bg.png is in public folder
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
+        // CRITICAL: Set backgroundPosition to 'top center' to prevent top cropping
+        backgroundPosition: 'top center',
       }}
     >
-
       <motion.div
+        // Adjust this transform as needed to position your content block vertically
+        style={{ transform: 'translateY(80px)' }}
         className="relative z-10 max-w-4xl w-full mx-auto" // z-10 to be above overlay
         variants={containerVariants}
         initial="hidden"
@@ -53,20 +56,17 @@ const Home = () => { // Renamed to Home to match user's file name
         {/* Main Text: "About Mahder" */}
         <motion.h1
           variants={textVariants}
-          // Added some top padding to the text to push it down relative to the viewport top,
-          // giving more space for the top part of the background image.
-          className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-800 mt-16 dark:text-white mb-36 md:mb-16 leading-tight pt-36 md:pt-46"
+          className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-800 mt-0 dark:text-white leading-tight md:mb-20"
         >
           About Mahder
         </motion.h1>
 
         {/* Main Image - Rectangular as per Figma */}
-        <motion.div variants={imageVariants} className="mt-20 md:mt-20">
+        <motion.div variants={imageVariants} className="md:mt-4 mt-7">
           <img
             src="/Image.png" // Your main image from public folder
             alt="Mahder Halie" // Updated alt text
-            // Reduced max-w- for a smaller image. Try md, sm, or specific pixel/rem values.
-            className="w-full max-w-md mx-auto rounded-lg object-cover shadow-xl" // Changed max-w-lg to max-w-md
+            className="w-full max-w-md mx-auto rounded-lg object-cover shadow-xl"
           />
         </motion.div>
       </motion.div>

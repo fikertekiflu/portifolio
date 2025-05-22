@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from 'framer-motion';
-import { Button } from "../ui/button";
-import { Card, CardContent } from "../ui/card";
+import { Button } from "../ui/button"; // Assuming this path is correct for your button component
+import { Card, CardContent } from "../ui/card"; // Assuming this path is correct for your card component
 
-// (styles and textContentVariants remain the same)
+// Styles remain the same
 const styles = {
     sectionBg: "bg-white dark:bg-gray-900",
     preTitleText: "text-gray-500 dark:text-gray-400",
@@ -15,6 +15,7 @@ const styles = {
     separatorLineColor: "border-gray-700 dark:border-gray-700",
 };
 
+// Text content variants for Framer Motion animations
 const textContentVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -24,49 +25,56 @@ const textContentVariants = {
     },
 };
 
-const Box = ({ title, description, imageUrl, buttonUrl, imageSrc, rectangleSrc }) => {
+// ---
+
+// The Box component, now accepting a `backgroundImg` prop
+const Box = ({ title, description, imageUrl, buttonUrl, imageSrc, rectangleSrc, backgroundImg }) => {
     return (
-        <div className="w-full md:w-[500px] h-[193px]">
+        // **FIXED:** Ensure the outer div's width matches the inner Card's width
+        <div className="w-full md:w-[500px] h-[193px] ">
             <Card
-                className="relative w-full md:w-[500px] h-[193px] rounded-[15px] shadow-[4px_7px_26px_#0000001f] overflow-hidden"
+                className="relative w-full  h-[193px] shadow-none border-none overflow-hidden"
                 style={{
-                    background: "linear-gradient(163deg, rgba(19,4,40,1) 7%, rgba(37,16,67,1) 34%, rgba(56,18,109,1) 57%, rgba(38,16,69,1) 85%, rgba(25,6,52,1) 100%)",
+                    backgroundImage: `url(${backgroundImg})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundColor: 'transparent', // Explicitly set background color to transparent
                 }}
             >
-                <CardContent className="p-0 flex h-full"> {/* Use flexbox for main content layout */}
-                    {/* Background image for the card - kept absolute for now as it's a large background */}
-                    <img
+                <CardContent className="p-0 flex h-full">
+                    {/* The original background image for the card (commented out) */}
+                    {/* <img
                         className="absolute w-[592px] h-[172px] top-0 left-[-22px] object-cover"
                         alt="Mask group"
                         src={imageUrl}
-                    />
+                    /> */}
 
                     {/* Left Icon Section */}
-                    {/* Changed absolute positioning to flex for content layout */}
-                    <div className="relative w-[122px] h-[115px] my-auto ml-8 flex-shrink-0"> {/* Adjusted margin-left and vertical centering */}
+                    <div className="relative w-[122px] h-[115px] my-auto ml-8 flex-shrink-0">
                         <div className="relative h-full">
-                            <img
+                            {/* The original image for the card (commented out) */}
+                            {/* <img
                                 className="absolute w-[115px] h-[115px] top-0 left-0 object-cover"
                                 alt="Rectangle"
                                 src={imageSrc}
-                            />
-                            {/* Small decorative divs - kept absolute relative to their parent div */}
-                            <div
+                            /> */}
+                            {/* Small decorative divs (commented out) */}
+                            {/* <div
                                 className="absolute w-[111px] h-[42px] top-[66px] left-[3px] rounded-[55.67px/21.04px] rotate-[176.86deg]"
                                 style={{
                                     background: "linear-gradient(180deg, rgba(44,18,80,1) 0%, rgba(44,18,80,1) 20%, rgba(44,18,80,0) 90%)",
                                 }}
-                            />
-                            <div className="absolute w-[5px] h-1 top-[77px] left-1 bg-[#ffa3a3] rounded-[2.42px/2.21px]" />
+                            /> */}
+                            {/* <div className="absolute w-[5px] h-1 top-[77px] left-1 bg-[#ffa3a3] rounded-[2.42px/2.21px]" />
                             <div className="absolute w-[5px] h-1 top-[19px] left-[19px] bg-[#683a92] rounded-[2.42px/2.21px]" />
                             <div className="absolute w-[5px] h-1 top-[100px] left-[93px] bg-[#683a92] rounded-[2.42px/2.21px]" />
-                            <div className="absolute w-[5px] h-1 top-[54px] left-[117px] bg-[#ffa3a3] rounded-[2.42px/2.21px]" />
+                            <div className="absolute w-[5px] h-1 top-[54px] left-[117px] bg-[#ffa3a3] rounded-[2.42px/2.21px]" /> */}
                         </div>
                     </div>
 
                     {/* Right Text Content Section */}
-                    {/* Use flex column to stack title, description, button */}
-                    <div className="flex-1 flex flex-col justify-center items-start p-4 pr-8 text-left z-10"> {/* Added padding, text alignment, and z-index */}
+                    <div className="flex-1 flex flex-col justify-center items-start p-4 pr-8 text-left z-10">
                         {/* Title - responsive font size */}
                         <div className="font-['Poppins',Helvetica] font-semibold text-white text-[20px] sm:text-[22px] lg:text-[26px] tracking-[0] leading-tight mb-2">
                             {title}
@@ -97,17 +105,19 @@ const Box = ({ title, description, imageUrl, buttonUrl, imageSrc, rectangleSrc }
     );
 };
 
+// ---
 
-// (cardData remains the same)
+// Card data with `backgroundImg` paths
 const cardData = [
     {
         id: 1,
         title: "Digital Strategy",
         description: "Targeted marketing plans built to reach the right audience and drive results across platforms",
         buttonText: "LEARN MORE",
-        imageUrl: "/mask-group.png",
+        imageUrl: "/mask-group.png", // This seems to be a different image, likely a foreground overlay
         imageSrc: "/Rectangle.png",
         rectangleSrc: "/rectangle-977.svg",
+        backgroundImg: "/f1.png", // **IMPORTANT: Confirm these paths are correct!**
     },
     {
         id: 2,
@@ -117,6 +127,7 @@ const cardData = [
         imageUrl: "/mask-group.png",
         imageSrc: "/Group 1.png",
         rectangleSrc: "/rectangle-977.svg",
+        backgroundImg: "/f2.png", // **IMPORTANT: Confirm these paths are correct!**
     },
     {
         id: 3,
@@ -126,6 +137,7 @@ const cardData = [
         imageUrl: "/mask-group.png",
         imageSrc: "/Group 1938.png",
         rectangleSrc: "/rectangle-977.svg",
+        backgroundImg: "/f3.png", // **IMPORTANT: Confirm these paths are correct!**
     },
     {
         id: 4,
@@ -135,10 +147,13 @@ const cardData = [
         imageUrl: "/mask-group.png",
         imageSrc: "/Group 1 (1).png",
         rectangleSrc: "/rectangle-977.svg",
+        backgroundImg: "/f4.png", // **IMPORTANT: Confirm these paths are correct!**
     },
 ];
 
-// (GridContainer remains the same as the last full code snippet)
+// ---
+
+// The main GridContainer component
 export default function GridContainer() {
     return (
         <section className={`py-6 ${styles.sectionBg}`}>
@@ -172,7 +187,7 @@ export default function GridContainer() {
             {/* Main container for the grid of cards - Centered */}
             <div className="flex justify-center px-4 sm:px-6 lg:px-8">
                 <div
-                    className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-4 max-w-[1016px] w-full"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-y-0 gap-x-0 max-w-[1016px] w-full"
                 >
                     {cardData.map((card) => (
                         <Box
@@ -183,6 +198,7 @@ export default function GridContainer() {
                             imageUrl={card.imageUrl}
                             imageSrc={card.imageSrc}
                             rectangleSrc={card.rectangleSrc}
+                            backgroundImg={card.backgroundImg}
                         />
                     ))}
                 </div>

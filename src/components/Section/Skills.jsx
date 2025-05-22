@@ -31,7 +31,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 md:py-28   overflow-hidden">
+    <section id="skills" className="py-20 md:py-21   overflow-hidden">
       {/* Container for headings only */}
       <div className="container-responsive mx-auto text-center">
         <motion.div
@@ -72,7 +72,7 @@ const Skills = () => {
               key={`${skill.id}-${index}`}
               src={skill.logoUrl}
               alt={`${skill.name} logo`}
-              className="h-12 sm:h-14 md:h-16 w-auto mx-4 md:mx-6 opacity-90 
+              className="h-12 sm:h-14 md:h-16 w-auto mx-4 md:mx-6 opacity-90
                        hover:opacity-100 transition-opacity duration-300"
             />
           ))}

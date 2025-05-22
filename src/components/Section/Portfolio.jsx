@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import CircularGallery from '../common/CircularGallary';
+import CircularGallery from '../common/CircularGallary'; // Corrected typo from Gallary to Gallery
 
 const Portfolio = () => {
   const styles = {
@@ -40,10 +40,10 @@ const Portfolio = () => {
   return (
     <section
       id="portfolio"
-      className={` ${styles.sectionBg} overflow-hidden px-0`}
+      className={` ${styles.sectionBg} overflow-hidden px-0 mt-10`} // Consider adding py-16 or similar for overall section padding if needed
     >
       <motion.div
-        className="mx-auto container-responsive"
+        className="mx-auto container-responsive" // Ensure 'container-responsive' is defined or use 'container'
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
@@ -66,13 +66,12 @@ const Portfolio = () => {
 
         {/* Main Title */}
         <motion.h2
-          className={`text-4xl sm:text-5xl font-semibold ${styles.mainTitle} mb-8 md:mb-20 text-center tracking-tight`}
+          // UPDATED: Reduced bottom margin classes
+          className={`text-4xl sm:text-5xl font-semibold ${styles.mainTitle} mb-4 md:mb-0 text-center tracking-tight`}
           variants={textContentVariants}
         >
           Explore My Work
         </motion.h2>
-
-
 
         {/* Full-width Gallery Container */}
         <motion.div

@@ -5,19 +5,31 @@ import { motion } from 'framer-motion';
 const portfolioItemsData = [
   // Item for C1R1-2 (Tall Left)
   { id: 1, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c1_tall/400/600?grayscale&blur=1`, title: 'Strategic Design Initiative' },
-  // Item for C1R3 (Left Bottom)
+  // Item for C1R3 (Left Bottom) -> User data had this as item 2, mapping to C2R1 in JSX
   { id: 2, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c1_short/600/400?grayscale&blur=1`, title: 'User Experience Audit' },
-  // Item for C2R1 (Column 2, Row 1)
+  // Item for C2R1 (Column 2, Row 1) -> User data had this as item 3, mapping to C3R1-2 in JSX
   { id: 3, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c2_r1/600/400?grayscale&blur=1`, title: 'Interactive Prototyping' },
-  // Item for C2R3 (Column 2, Row 3)
-  { id: 4, type: 'image', image: `https://picsum.photos/seed/8/800/600?grayscale`, title: 'Mobile-First Development' },
+  // This item (id:4) from original data is not explicitly used by index in the JSX below.
+  // { id: 4, type: 'image', image: `https://picsum.photos/seed/8/800/600?grayscale`, title: 'Mobile-First Development' },
+  // Item for C2R3 (Column 2, Row 3) -> User data had this as item 5, mapping to C1R3 in JSX
   { id: 5, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c2_r3/600/400?grayscale&blur=1`, title: 'Mobile-First Development' },
-  // Item for C3R1-3 (Column 3, Tahttps://picsum.photos/seed/10/800/600?grayscale`, title: 'Brand Identity System' }, // Dark placeholder
-  // Item for C4R1-2 (Column 4, Tall)
-  { id: 6, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c4_tall/400/600?grayscale&blur=1`, title: 'E-commerce Optimization' },
-  // Item for C4R3 (Column 4, Row 3)
-  { id: 7, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c4_short/600/400?grayscale&blur=1`, title: 'Content Management System' },
+  // Item for C3R1-3 (Column 3, Tall) -> User data had this as item 6, mapping to C2R3 in JSX
+  { id: 6, type: 'image', image: `https://picsum.photos/seed/10/800/600?grayscale`, title: 'Brand Identity System' }, // Dark placeholder, was C3R1-3, now used for portfolioItemsData[5]
+  // Item for C4R1-2 (Column 4, Tall) -> User data had this as item 7, mapping to C3R3 in JSX
+  { id: 7, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c4_tall/400/600?grayscale&blur=1`, title: 'E-commerce Optimization' },
+  // Item for C4R3 (Column 4, Row 3) -> This would be portfolioItemsData[7] if used.
+  // { id: 8, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c4_short/600/400?grayscale&blur=1`, title: 'Content Management System' },
 ];
+// Adjusted data array to match the 6 image items used in the JSX + 1 unused for safety.
+const currentPortfolioItems = [
+    portfolioItemsData[0], // For C1R1-2
+    portfolioItemsData[1], // For C2R1
+    portfolioItemsData[2], // For C3R1-2
+    portfolioItemsData[3], // For C1R3 (was portfolioItemsData[4] in user's JSX, now using index 3 from original data)
+    portfolioItemsData[4], // For C2R3 (was portfolioItemsData[5] in user's JSX, now using index 4 from original data)
+    portfolioItemsData[5], // For C3R3 (was portfolioItemsData[6] in user's JSX, now using index 5 from original data)
+];
+
 
 const PortfolioItem = ({ item, className = '' }) => {
   // Check if item or item.image is missing or invalid
@@ -87,57 +99,63 @@ const App = () => {
   };
 
   return (
-    <section id="portfolio" className="py-4 md:py-8 bg-white mb-10 dark:bg-gray-900 overflow-hidden">
+    <section id="portfolio" className="py-16 md:py-20 bg-white mb-10 dark:bg-gray-900 overflow-hidden">
       <motion.div
         className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl w-full"
         variants={sectionVariants}
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
       >
-        {/* 3-column grid. First column is now 0.5fr to make it thinner. */}
-        <div className="grid grid-cols-1 md:grid-cols-[0.5fr_1fr_1fr] md:grid-rows-3 gap-1.5 md:gap-2.5 h-[500px]">
+        {/* Grid container:
+            - Mobile: Defaults to single column (grid-cols-1), height is auto.
+            - Desktop (md+): 3 columns, 3 rows, fixed height.
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-[0.5fr_1fr_1fr] md:grid-rows-3 gap-2.5 md:h-[600px]"> {/* Increased desktop height slightly for better fit */}
 
           {/* Column 1, Row 1 & 2 (Left Tall Image - now thinner) */}
+          {/* Mobile: Full width, specific height. Desktop: Grid placement, h-auto (inherits from grid cell) */}
           <motion.div
             custom={0}
             variants={gridItemVariants}
-            className="md:col-start-1 md:row-start-1 md:row-span-2"
+            className="h-96 md:h-auto md:col-start-1 md:row-start-1 md:row-span-2"
           >
-            <PortfolioItem item={portfolioItemsData[0]} className="h-full" />
+            <PortfolioItem item={currentPortfolioItems[0]} className="h-full" />
           </motion.div>
 
           {/* Column 2, Row 1 (Middle Top Image) */}
           <motion.div
             custom={1}
             variants={gridItemVariants}
-            className="md:col-start-2 md:row-start-1"
+            className="h-72 md:h-auto md:col-start-2 md:row-start-1"
           >
-            <PortfolioItem item={portfolioItemsData[1]} className="h-full" />
+            <PortfolioItem item={currentPortfolioItems[1]} className="h-full" />
           </motion.div>
 
-          {/* Column 3, Row 1 & 2 (Right Tall Image - black box) */}
+          {/* Column 3, Row 1 & 2 (Right Tall Image) */}
           <motion.div
             custom={2}
             variants={gridItemVariants}
-            className="md:col-start-3 md:row-start-1 md:row-span-2"
+            className="h-96 md:h-auto md:col-start-3 md:row-start-1 md:row-span-2"
           >
-            <PortfolioItem item={portfolioItemsData[2]} className="h-full" />
+            <PortfolioItem item={currentPortfolioItems[2]} className="h-full" />
           </motion.div>
 
           {/* Column 1, Row 3 (Left Bottom Image) */}
           <motion.div
             custom={3}
             variants={gridItemVariants}
-            className="md:col-start-1 md:row-start-3"
+            className="h-72 md:h-auto md:col-start-1 md:row-start-3"
           >
-            <PortfolioItem item={portfolioItemsData[4]} className="h-full" />
+            {/* User's JSX used portfolioItemsData[4], mapping to currentPortfolioItems[3] */}
+            <PortfolioItem item={currentPortfolioItems[3]} className="h-full" />
           </motion.div>
 
           {/* Title Block: Column 2, Row 2 */}
           <motion.div
             custom={4}
             variants={gridItemVariants}
-            className="md:col-start-2 md:row-start-2 flex flex-col items-center justify-center p-3 bg-white dark:bg-gray-900 rounded-lg" // C2R2 (Text Block)
+            // Mobile: Specific min-height. Desktop: Grid placement, h-auto.
+            className="min-h-[10rem] md:min-h-0 md:h-auto md:col-start-2 md:row-start-2 flex flex-col items-center justify-center p-4 bg-white dark:bg-gray-900 rounded-lg"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-2 text-center">
               Portfolios
@@ -151,24 +169,21 @@ const App = () => {
           <motion.div
             custom={5}
             variants={gridItemVariants}
-            className="md:col-start-2 md:row-start-3"
+            className="h-72 md:h-auto md:col-start-2 md:row-start-3"
           >
-            <PortfolioItem item={portfolioItemsData[5]} className="h-full" />
+            {/* User's JSX used portfolioItemsData[5], mapping to currentPortfolioItems[4] */}
+            <PortfolioItem item={currentPortfolioItems[4]} className="h-full" />
           </motion.div>
 
           {/* Column 3, Row 3 (Right Bottom Image) */}
           <motion.div
             custom={6}
             variants={gridItemVariants}
-            className="md:col-start-3 md:row-start-3"
+            className="h-72 md:h-auto md:col-start-3 md:row-start-3"
           >
-            <PortfolioItem item={portfolioItemsData[6]} className="h-full" />
+            {/* User's JSX used portfolioItemsData[6], mapping to currentPortfolioItems[5] */}
+            <PortfolioItem item={currentPortfolioItems[5]} className="h-full" />
           </motion.div>
-
-          {/* The extra motion.div that attempted col-start-4 and portfolioItemsData[7] has been removed
-              as it doesn't fit the 3-column layout depicted in the image and uses an out-of-bounds index.
-              The image shows 3 items in the bottom row. */}
-
         </div>
       </motion.div>
     </section>
