@@ -1,19 +1,17 @@
 import React from "react";
-// Assuming Box component is defined and imported correctly
-// import Box from './Box';
-// Assuming Button, Card, CardContent are correctly imported or defined elsewhere
-import { Button } from "../ui/button";
-import { Card, CardContent } from "../ui/card";
+import { Button } from "../ui/button"; // Ensure this path is correct
+import { Card, CardContent } from "../ui/card"; // Ensure this path is correct
 
 
-// Your Box component (as you provided it, now accepting props)
-// It needs to accept title, description, imageUrl, buttonUrl, imageSrc, and rectangleSrc as props.
+// Your Box component (with fixed width as requested)
 const Box = ({ title, description, imageUrl, buttonUrl, imageSrc, rectangleSrc }) => {
   return (
+    // KEEPING w-[570px] as requested
+    <div className="w-[500px] h-[193px]">
 
-    <div className="w-[570px] h-[193px] ml-12"> {/* Add mt-20 here if you want spacing around each box */}
       <Card
-        className="relative w-[570px] h-[193px] rounded-[15px] shadow-[4px_7px_26px_#0000001f] overflow-hidden"
+        // KEEPING w-[570px] as requested
+        className="relative w-[500px] h-[193px] rounded-[15px] shadow-[4px_7px_26px_#0000001f] overflow-hidden"
         style={{
           background: "linear-gradient(163deg, rgba(19,4,40,1) 7%, rgba(37,16,67,1) 34%, rgba(56,18,109,1) 57%, rgba(38,16,69,1) 85%, rgba(25,6,52,1) 100%)",
         }}
@@ -40,9 +38,6 @@ const Box = ({ title, description, imageUrl, buttonUrl, imageSrc, rectangleSrc }
                 backgroundImage: `url(${rectangleSrc})`, // Dynamic SVG URL
               }}
             >
-              {/* Assuming Button component is defined and imported correctly */}
-              {/* If you are passing Button as a prop, make sure you import it at the top of the file. */}
-              {/* If Button component is internal to Box, it needs to be imported directly within this file */}
               <Button variant="ghost" className="absolute w-full h-full p-0">
                 <span className="font-['Poppins',Helvetica] font-medium text-white text-[10px] text-center tracking-[0] leading-[15px] whitespace-nowrap">
                   {buttonUrl} {/* Dynamic button text */}
@@ -84,11 +79,10 @@ const Box = ({ title, description, imageUrl, buttonUrl, imageSrc, rectangleSrc }
 // Define your data for each card
 const cardData = [
   {
-    id: 1, // Add a unique ID for React keys
+    id: 1,
     title: "Digital Strategy",
     description: "Targeted marketing plans built to reach the right audience and drive results across platforms",
     buttonText: "LEARN MORE",
-    // Common image paths as you specified
     imageUrl: "/mask-group.png",
     imageSrc: "/Rectangle.png",
     rectangleSrc: "/rectangle-977.svg",
@@ -124,19 +118,30 @@ const cardData = [
 
 export default function GridContainer() {
   return (
-    // This is the container for your 2x2 grid
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 "> {/* Responsive grid: 1 col on small, 2 on medium+ */}
-      {cardData.map((card) => (
-        <Box
-          key={card.id} // Use the unique ID as the key
-          title={card.title}
-          description={card.description}
-          buttonUrl={card.buttonText}
-          imageUrl={card.imageUrl}
-          imageSrc={card.imageSrc}
-          rectangleSrc={card.rectangleSrc}
-        />
-      ))}
+    // Outer container to center the entire grid and manage its width
+    // Minimum width of the container will be (570px * 2) + desired_gap.
+    // For gap-x-4 (16px), this is 1140px + 16px = 1156px.
+    // So, if the viewport is less than 1156px wide, the cards will stack or overflow.
+    <div className="flex justify-center py-8"> {/* Flex container to center the grid */}
+      <div
+        // Use a fixed max-width for the grid itself, or let it respond
+        // For 2 cards at 570px each, plus a gap, a max-width would be appropriate
+        // to prevent it from stretching too wide on very large screens.
+        // max-w-[1156px] will accommodate 2x570px cards + gap-x-4 (16px)
+        className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-4" // Decreased gap-x to 4 (16px)
+      >
+        {cardData.map((card) => (
+          <Box
+            key={card.id}
+            title={card.title}
+            description={card.description}
+            buttonUrl={card.buttonText}
+            imageUrl={card.imageUrl}
+            imageSrc={card.imageSrc}
+            rectangleSrc={card.rectangleSrc}
+          />
+        ))}
+      </div>
     </div>
   );
 }
