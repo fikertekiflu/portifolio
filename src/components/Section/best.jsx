@@ -87,7 +87,7 @@ const App = () => {
   };
 
   return (
-    <section id="portfolio" className="py-4 md:py-8 bg-white dark:bg-gray-900 overflow-hidden">
+    <section id="portfolio" className="py-4 md:py-8 bg-white mb-10 dark:bg-gray-900 overflow-hidden">
       <motion.div
         className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl w-full"
         variants={sectionVariants}
