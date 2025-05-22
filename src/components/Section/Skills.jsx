@@ -31,7 +31,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 md:py-21   overflow-hidden">
+    <section id="skills" className="py-10 md:py-21   overflow-hidden">
       {/* Container for headings only */}
       <div className="container-responsive mx-auto text-center">
         <motion.div
