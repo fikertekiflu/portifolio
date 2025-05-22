@@ -57,7 +57,7 @@ function Footer() {
 
 
     return (
-        <div className="w-full bg-black h-[1140px]">
+        <div className="w-full bg-black md:h-[1140px] h-[1800px]">
             <div className="relative max-w-[2070px] mx-auto px-[93px]">
                 {/* Testimonials Section */}
                 <section className="py-16">
@@ -75,11 +75,11 @@ function Footer() {
                 </section>
 
                 {/* Container for MAHDER HAILE and Colored Section */}
-                <div className="flex  items-center  pt-[23px] pb-10 ">
+                <div className="flex  items-center  md:pt-[23px] pt:[0px] pb-10 ">
                     {/* Left Side: MAHDER HAILE */}
                        <div className="inline-flex flex-col space-y-2 items-start">
                         {/* MAHDER part of the heading */}
-                        <h1 className="relative w-fit font-['Inter'] font-bold text-white text-[56px] leading-[68.8px] tracking-[-2.96px] mb-0">
+                        <h1 className="relative w-fit font-['Inter'] font-bold text-white text-[56px] leading-[68.8px] tracking-[-2.96px] mb:0">
                             MAHDER
                         </h1>
                         {/* HAILE and Social Icons - now in a flex row */}
@@ -113,7 +113,8 @@ function Footer() {
 
                     {/* Colored Background Section with Marquee */}
                     <div
-                        className="relative overflow-hidden ml-[-230px] flex-grow rounded-lg bg-[url('/backcolor.png')] bg-cover bg-center"
+                        className="relative hidden md:block
+                         overflow-hidden ml-[-230px] flex-grow rounded-lg bg-[url('/backcolor.png')] bg-cover bg-center"
                         style={{
                             height: '600px',
                         }}
