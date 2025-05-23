@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 // Logo Component
 const Logo = () => (
   <span className="text-xl font-semibold tracking-tight text-gray-800 dark:text-white">
-    Mahder Halie
+    MAHDER HAILE
   </span>
   // If you have an SVG logo for "Mahder Halie", you can use it here:
   // <img src="/mahder-halie-logo.svg" alt="Mahder Halie Logo" className="h-7 w-auto" />

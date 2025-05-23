@@ -70,7 +70,7 @@ function App() {
       {/* Fixed Logo/Icon */}
       <div className="fixed top-3/4  right-0 transform -translate-y-1/2 z-50">
         <img
-          src="/nova.png"
+          src="/fixednovanova.png"
           alt="Company Logo"
           className="w-16 h-22 "
         />

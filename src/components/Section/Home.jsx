@@ -64,7 +64,7 @@ const Home = () => {
         {/* Main Image - Rectangular as per Figma */}
         <motion.div variants={imageVariants} className="md:mt-4 mt-7">
           <img
-            src="/Image.png" // Your main image from public folder
+            src="/landingpic.png" // Your main image from public folder
             alt="Mahder Halie" // Updated alt text
             className="w-full max-w-md mx-auto rounded-lg object-cover shadow-xl"
           />
