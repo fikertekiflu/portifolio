@@ -171,13 +171,13 @@ class Media {
         uniform sampler2D tMap;
         uniform float uBorderRadius;
         varying vec2 vUv;
-        
+
         // Rounded box SDF for UV space
         float roundedBoxSDF(vec2 p, vec2 b, float r) {
           vec2 d = abs(p) - b;
           return length(max(d, vec2(0.0))) + min(max(d.x, d.y), 0.0) - r;
         }
-        
+
         void main() {
           vec2 ratio = vec2(
             min((uPlaneSizes.x / uPlaneSizes.y) / (uImageSizes.x / uImageSizes.y), 1.0),
@@ -188,13 +188,13 @@ class Media {
             vUv.y * ratio.y + (1.0 - ratio.y) * 0.5
           );
           vec4 color = texture2D(tMap, uv);
-          
+
           // Apply rounded corners (assumes vUv in [0,1])
           float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
           if(d > 0.0) {
             discard;
           }
-          
+
           gl_FragColor = vec4(color.rgb, 1.0);
         }
       `,
@@ -330,18 +330,19 @@ class App {
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
     const defaultItems = [
-      { image: `https://picsum.photos/seed/1/800/600?grayscale`, text: 'Bridge' },
-      { image: `https://picsum.photos/seed/2/800/600?grayscale`, text: 'Desk Setup' },
-      { image: `https://picsum.photos/seed/3/800/600?grayscale`, text: 'Waterfall' },
-      { image: `https://picsum.photos/seed/4/800/600?grayscale`, text: 'Strawberries' },
-      { image: `https://picsum.photos/seed/5/800/600?grayscale`, text: 'Deep Diving' },
-      { image: `https://picsum.photos/seed/16/800/600?grayscale`, text: 'Train Track' },
-      { image: `https://picsum.photos/seed/17/800/600?grayscale`, text: 'Santorini' },
-      { image: `https://picsum.photos/seed/8/800/600?grayscale`, text: 'Blurry Lights' },
-      { image: `https://picsum.photos/seed/9/800/600?grayscale`, text: 'New York' },
-      { image: `https://picsum.photos/seed/10/800/600?grayscale`, text: 'Good Boy' },
-      { image: `https://picsum.photos/seed/21/800/600?grayscale`, text: 'Coastline' },
-      { image: `https://picsum.photos/seed/12/800/600?grayscale`, text: "Palm Trees" }
+      { image: `/work1.jpg`, text: 'Anbesa' },
+      { image: `/work3.jpg`, text: 'Pepsi' },
+      { image: `ovid2.jpg`, text: 'ovid Realstate' },
+      { image: `pepsi2.jpg`, text: 'pepsi' },
+      { image: `/work5.jpg`, text: 'Anbesa' },
+      { image: `/work6.jpg`, text: 'Quantum Technology' },
+      { image: `work7.jpg`, text: 'Train Track' },
+      { image: `ovid1.jpg`, text: 'ovid Realstate' },
+      { image: `pepsi1.jpg`, text: 'pepsi' },
+      { image: `work4.jpg`, text: 'Anbesa' },
+      { image: `/work1.jpg`, text: 'Pepsi' },
+      { image: `work3.jpg`, text: 'Anbesa' },
+      { image: `ovid3.jpg`, text: "ovid Realstate" }
     ]
     const galleryItems = items && items.length ? items : defaultItems
     this.mediasImages = galleryItems.concat(galleryItems)
