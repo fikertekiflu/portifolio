@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const About = () => {
+// Modified to accept an 'id' prop
+const About = ({ id }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ const About = () => {
 
   return (
     <section
-      id="about"
+      id={id} // **CRUCIAL:** This `id` prop must match the `path` in Navbar's `pagesDropdownItems`
       className="py-0 md:py-90 dark:bg-gray-900 font-sans overflow-hidden" // Note: md:py-90 might be a custom class value. Standard Tailwind goes up to py-96.
     >
       <motion.div
@@ -49,8 +50,8 @@ const About = () => {
               alt="decorative icon one"
               className="inline-block h-9 w-11 md:h-12 md:w-14 mx-3 align-middle"
             />
-            Specialist,I Aim to Push  Boundaries <br />
-             of Creativity.With a Background in analytics and Digital<img
+            Specialist,I Aim to Push Boundaries <br />
+            of Creativity.With a Background in analytics and Digital<img
               src="/two.png"
               alt="decorative icon two"
               className="inline-block h-7 w-20 md:h-12 md:w-32 mx-3 align-middle"
@@ -58,7 +59,7 @@ const About = () => {
 
 
             Media, I've Been Able to Merge These Worlds for measurable<br />
-             impact.
+            impact.
           </p>
         </div>
       </motion.div>
@@ -70,7 +71,7 @@ const About = () => {
 
 
 
-        <motion.div
+      <motion.div
         className="md:ml-14 ml-5 mx-auto md:hidden block" // Ensure 'container-responsive' is defined or use 'container'
         variants={sectionVariants}
         initial="hidden"
@@ -98,7 +99,7 @@ const About = () => {
               alt="decorative icon one"
               className="inline-block h-9 w-11 md:h-12 md:w-14 mx-3 align-middle"
             />
-            Specialist,I Aim to Push the  <br />
+            Specialist,I Aim to Push the <br />
             Boundaries of Creativity. With<br/> a Background in analytics and Digital   <img
               src="/two.png"
               alt="decorative icon two"
@@ -106,7 +107,7 @@ const About = () => {
             />Media, I've <br />
 
 
-             Been Able to Merge These Worlds for measurable  impact.<br />
+          Been Able to Merge These Worlds for measurable impact.<br />
 
           </p>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Assuming React Router
+// Link and useNavigate are no longer directly used for section scrolling within the same page
+// import { Link, useNavigate } from 'react-router-dom'; // No longer needed for internal scrolling
 
 // Logo Component
 const Logo = () => (
@@ -13,36 +14,46 @@ const Logo = () => (
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isPagesDropdownOpen, setIsPagesDropdownOpen] = useState(false); // For "Pages" dropdown
-  const navigate = useNavigate();
 
-  // Navigation items - "Pages" will be a dropdown trigger
-  const mainNavItems = [
-    // { name: 'Pages', path: '#', isDropdown: true }, // Placeholder for dropdown logic
-    { name: 'Contact', path: '/contact' } // Example path
-  ];
+  // Navigation items - 'path' now corresponds to section IDs
+  // const mainNavItems = [
 
-  // Example dropdown items for "Pages"
+  //   { name: 'Contact', path: 'contact-section' }
+  // ];
+
+  // Dropdown items for "Pages" - 'path' now corresponds to section IDs
   const pagesDropdownItems = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Projects', path: '/projects' },
-    // Add more pages as needed
+    // Ensure 'home-section' matches the ID applied to your Home component's main element
+    { name: 'Home', path: 'home-section' },
+    // **CRUCIAL:** Ensure 'about-section' matches the ID applied to your About component's main element
+    { name: 'About', path: 'about-section' },
+    // Ensure 'portfolio-section' matches the ID applied to your Portfolio component's main element
+    { name: 'Projects', path: 'portfolio-section' },
+    // Add more pages as needed, mapping to their respective section IDs
   ];
 
-  const handleNavigate = (path) => {
-    if (path === '#') return; // Do nothing for placeholder paths
-    navigate(path);
+  const handleScrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      // Smooth scroll to the section
+      window.scrollTo({
+        top: section.offsetTop - 70, // Adjust offset as needed for fixed header or spacing
+        behavior: 'smooth'
+      });
+    }
+    // Close menus after clicking
     setIsMobileMenuOpen(false);
     setIsPagesDropdownOpen(false);
   };
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 font-sans">
-      <div className="md:px-24 ml-2 pr-3 mx-auto  py-5 flex justify-between md:items-center">
+      <div className="md:px-24 ml-2 pr-3 mx-auto py-5 flex justify-between md:items-center">
         {/* Logo/Name */}
-        <Link to="/" className="cursor-pointer">
+        {/* Changed Link to a button for consistency with scrolling function */}
+        <button onClick={() => handleScrollToSection('home-section')} className="cursor-pointer">
           <Logo />
-        </Link>
+        </button>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
@@ -61,7 +72,8 @@ const Navbar = () => {
                 {pagesDropdownItems.map(item => (
                   <button
                     key={item.name}
-                    onClick={() => handleNavigate(item.path)}
+                    // This calls the scroll function with the target section's ID
+                    onClick={() => handleScrollToSection(item.path)}
                     className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                   >
                     {item.name}
@@ -72,15 +84,16 @@ const Navbar = () => {
           </div>
 
           {/* Other Main Nav Items */}
-          {mainNavItems.map((item) => (
+          {/* {mainNavItems.map((item) => (
             <button
               key={item.name}
-              onClick={() => handleNavigate(item.path)}
+              // This calls the scroll function with the target section's ID
+              onClick={() => handleScrollToSection(item.path)}
               className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 text-sm font-medium"
             >
               {item.name}
             </button>
-          ))}
+          ))} */}
         </div>
 
         {/* Mobile Menu Button */}
@@ -106,7 +119,7 @@ const Navbar = () => {
         <div className="md:hidden absolute top-full left-0 right-0 bg-white dark:bg-gray-800 shadow-lg rounded-b-lg py-2 mx-4 border dark:border-gray-700">
           {/* Pages Dropdown for Mobile */}
           <div className="px-4 py-2">
-             <button
+              <button
               onClick={() => setIsPagesDropdownOpen(!isPagesDropdownOpen)}
               className="flex justify-between items-center w-full text-sm text-gray-700 dark:text-gray-300 font-medium"
             >
@@ -118,7 +131,8 @@ const Navbar = () => {
                 {pagesDropdownItems.map(item => (
                   <button
                     key={item.name}
-                    onClick={() => handleNavigate(item.path)}
+                    // This calls the scroll function with the target section's ID
+                    onClick={() => handleScrollToSection(item.path)}
                     className="block w-full text-left px-2 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors rounded"
                   >
                     {item.name}
@@ -131,7 +145,8 @@ const Navbar = () => {
           {mainNavItems.map((item) => (
             <button
               key={item.name}
-              onClick={() => handleNavigate(item.path)}
+              // This calls the scroll function with the target section's ID
+              onClick={() => handleScrollToSection(item.path)}
               className="block w-full text-left px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
             >
               {item.name}

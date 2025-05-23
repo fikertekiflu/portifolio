@@ -1,4 +1,7 @@
 import React from 'react';
+// Removed BrowserRouter, Routes, Route from react-router-dom as we are no longer using separate routes for sections
+// All sections will now be rendered on the single '/' path.
+
 // Assuming these components are correctly imported and defined in their respective files
 import Navbar from './components/layout/Navbar';
 import Home from './components/Section/Home';
@@ -28,7 +31,6 @@ const interactiveLucidePointerSvg = `
   </svg>
 `;
 
-
 // Encode SVGs to Data URIs for CSS `url()` function
 // Hotspot: 4 4 is a good starting point for this arrow's tip.
 // You might need to fine-tune it by looking at your cursor on screen.
@@ -43,6 +45,7 @@ const interactiveCursorUri = `url("data:image/svg+xml,${encodedInteractiveSvg}")
 
 function App() {
   return (
+    // Removed <Router> wrapper here. It should be in your main index.js or equivalent.
     <div className="flex flex-col overflow-x-hidden bg-brand-backgroundLight">
       {/* Custom Cursor Styles */}
       <style jsx global>{`
@@ -57,43 +60,45 @@ function App() {
         }
       `}</style>
 
-      {/* Navbar Section */}
+      {/* Navbar Section - Placed outside Routes so it's always visible */}
       <div className="w-full bg-brand-backgroundLight">
         <div className="container-responsive">
-          <Navbar />
+          <Navbar /> {/* Navbar will handle scrolling to sections */}
         </div>
       </div>
 
       {/* Fixed Logo/Icon */}
-      {/* This image will stay fixed on the right side of the screen */}
-      <div className="fixed top-1/2 right-0 transform -translate-y-1/2 z-50">
-        {/* Replace 'https://placehold.co/60x60/000000/FFFFFF?text=Logo' with your actual image URL */}
-        {/* Adjust width (w-16), height (h-16), and other classes as needed */}
+      <div className="fixed top-3/4  right-0 transform -translate-y-1/2 z-50">
         <img
-          src="/fixedlogo2.png"
+          src="/nova.png"
           alt="Company Logo"
-          className="w-16 h-16  shadow-lg border-2 border-none bg-[#02E5FF]"
+          className="w-16 h-22 "
         />
       </div>
 
-      {/* Main Content Area */}
+      {/* Main Content Area - All sections displayed on one page */}
       <main className="flex-grow">
-        <Home />
+        {/* Pass ID to Home component. Ensure Home.jsx accepts and applies this 'id' prop */}
+        <Home id="home-section" />
         <div className="container-responsive">
-          <About />
-          <Best />
-          <Whatido/>
-          <Skills />
-          <Portfolio />
-          <WorkProcess />
-          <FAQ />
-        </div>
-
-        {/* Footer Section */}
-        <div className="w-full">
-          <Footer />
+          {/* **CRUCIAL:** Pass ID to About component. This ID must match the 'path' used in Navbar */}
+          <About id="about-section" />
+          <Best id="best-section" /> {/* Added id for Best section, ensure Best.jsx uses it */}
+          <Whatido id="whatido-section" /> {/* Added id for Whatido section, ensure Whatido.jsx uses it */}
+          <Skills id="skills-section" /> {/* Added id for Skills section, ensure Skills.jsx uses it */}
+          {/* Pass ID to Portfolio component. Ensure Portfolio.jsx accepts and applies this 'id' prop */}
+          <Portfolio id="portfolio-section" />
+          <WorkProcess id="workprocess-section" /> {/* Added id for WorkProcess section, ensure WorkProcess.jsx uses it */}
+          <FAQ id="faq-section" /> {/* Added id for FAQ section, ensure FAQ.jsx uses it */}
+          {/* Make sure 'contact-section' or relevant ID is also passed to your Contact component if you have one */}
+          {/* Example: <Contact id="contact-section" /> */}
         </div>
       </main>
+
+      {/* Footer Section */}
+      <div className="w-full">
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -2,7 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import CircularGallery from '../common/CircularGallary'; // Corrected typo from Gallary to Gallery
 
-const Portfolio = () => {
+// --- START: MODIFIED CODE ---
+// 1. Accept the 'id' prop
+const Portfolio = ({ id }) => {
+// --- END: MODIFIED CODE ---
   const styles = {
     sectionBg: "bg-brand-backgroundLight dark:bg-gray-900",
     preTitleText: "text-gray-500 dark:text-gray-400",
@@ -39,7 +42,10 @@ const Portfolio = () => {
 
   return (
     <section
-      id="portfolio"
+      // --- START: MODIFIED CODE ---
+      // 2. Apply the 'id' prop here, instead of a hardcoded string
+      id={id}
+      // --- END: MODIFIED CODE ---
       className={` ${styles.sectionBg} overflow-hidden px-0 mt-10`} // Consider adding py-16 or similar for overall section padding if needed
     >
       <motion.div

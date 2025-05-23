@@ -14,7 +14,7 @@ const portfolioItemsData = [
   // Item for C2R3 (Column 2, Row 3) -> User data had this as item 5, mapping to C1R3 in JSX
   { id: 5, type: 'image', image: `work3.jpg`, title: 'Anbessa',logo: `/logoGiorgis.jpg`  },
   // Item for C3R1-3 (Column 3, Tall) -> User data had this as item 6, mapping to C2R3 in JSX
-  { id: 6, type: 'image', image: `work6.jpg`, title: 'Quantem Technology',logo: `/logos/ovid_logo.png`  }, // Dark placeholder, was C3R1-3, now used for portfolioItemsData[5]
+  { id: 6, type: 'image', image: `work6.jpg`, title: 'Quantem Technology',logo: `/10001.jpeg`  }, // Dark placeholder, was C3R1-3, now used for portfolioItemsData[5]
   // Item for C4R1-2 (Column 4, Tall) -> User data had this as item 7, mapping to C3R3 in JSX
   { id: 7, type: 'image', image: `ovid3.jpg`, title: 'Ovid Realstate',logo: `/ovidlogo.png`  },
   // Item for C4R3 (Column 4, Row 3) -> This would be portfolioItemsData[7] if used.

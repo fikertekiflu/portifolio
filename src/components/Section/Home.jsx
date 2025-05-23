@@ -34,7 +34,7 @@ const Home = () => {
   return (
     // Hero section container
     <section
-      id="home" // For potential single-page navigation
+      id="home-section" // For potential single-page navigation
       // Using the reduced min-heights to prevent large empty space at the bottom of the section
       className="relative md:min-h-[880px] min-h-[73vh] w-full flex flex-col items-center justify-center text-center px-6 py-10 font-sans overflow-hidden"
       style={{
