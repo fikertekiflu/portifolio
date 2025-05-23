@@ -4,19 +4,19 @@ import { motion } from 'framer-motion';
 // Updated Portfolio items data for the revised 7-image, 4-column layout
 const portfolioItemsData = [
   // Item for C1R1-2 (Tall Left)
-  { id: 1, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c1_tall/400/600?grayscale&blur=1`, title: 'Strategic Design Initiative' },
+  { id: 1, type: 'image', image: `/ovid1.jpg`, title: 'Ovid RealState',logo: `/ovidlogo.png`  },
   // Item for C1R3 (Left Bottom) -> User data had this as item 2, mapping to C2R1 in JSX
-  { id: 2, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c1_short/600/400?grayscale&blur=1`, title: 'User Experience Audit' },
+  { id: 2, type: 'image', image: `/work1.jpg`, title: 'Gebeta',logo: `/pepsilogo.png`  },
   // Item for C2R1 (Column 2, Row 1) -> User data had this as item 3, mapping to C3R1-2 in JSX
-  { id: 3, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c2_r1/600/400?grayscale&blur=1`, title: 'Interactive Prototyping' },
+  { id: 3, type: 'image', image: `pepsi2.jpg`, title: 'pepsi',logo: `/pepsilogo.png`  },
   // This item (id:4) from original data is not explicitly used by index in the JSX below.
   // { id: 4, type: 'image', image: `https://picsum.photos/seed/8/800/600?grayscale`, title: 'Mobile-First Development' },
   // Item for C2R3 (Column 2, Row 3) -> User data had this as item 5, mapping to C1R3 in JSX
-  { id: 5, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c2_r3/600/400?grayscale&blur=1`, title: 'Mobile-First Development' },
+  { id: 5, type: 'image', image: `work3.jpg`, title: 'Anbessa',logo: `/logoGiorgis.jpg`  },
   // Item for C3R1-3 (Column 3, Tall) -> User data had this as item 6, mapping to C2R3 in JSX
-  { id: 6, type: 'image', image: `https://picsum.photos/seed/10/800/600?grayscale`, title: 'Brand Identity System' }, // Dark placeholder, was C3R1-3, now used for portfolioItemsData[5]
+  { id: 6, type: 'image', image: `work6.jpg`, title: 'Quantem Technology',logo: `/logos/ovid_logo.png`  }, // Dark placeholder, was C3R1-3, now used for portfolioItemsData[5]
   // Item for C4R1-2 (Column 4, Tall) -> User data had this as item 7, mapping to C3R3 in JSX
-  { id: 7, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c4_tall/400/600?grayscale&blur=1`, title: 'E-commerce Optimization' },
+  { id: 7, type: 'image', image: `ovid3.jpg`, title: 'Ovid Realstate',logo: `/ovidlogo.png`  },
   // Item for C4R3 (Column 4, Row 3) -> This would be portfolioItemsData[7] if used.
   // { id: 8, type: 'image', image: `https://picsum.photos/seed/gallery_rev_c4_short/600/400?grayscale&blur=1`, title: 'Content Management System' },
 ];
@@ -32,7 +32,6 @@ const currentPortfolioItems = [
 
 
 const PortfolioItem = ({ item, className = '' }) => {
-  // Check if item or item.image is missing or invalid
   if (!item || (item.type === 'image' && (typeof item.image !== 'string' || item.image.trim() === ''))) {
     return (
       <div className={`w-full h-full bg-gray-700 dark:bg-gray-800 rounded-lg shadow flex items-center justify-center text-gray-400 dark:text-gray-500 ${className}`}>
@@ -50,19 +49,17 @@ const PortfolioItem = ({ item, className = '' }) => {
       <img
         src={item.image}
         alt={item.title || 'Portfolio item'}
-        // Ensure image covers the container and maintains aspect ratio
         className="w-full h-full object-cover filter blur-sm group-hover:blur-none transition-all duration-300 ease-in-out transform group-hover:scale-105"
         loading="lazy"
         onError={(e) => {
-          e.target.onerror = null; // Prevents looping if fallback also fails
-          e.target.src = "https://placehold.co/600x400/7f1d1d/ffffff?text=Img+Load+Error"; // Fallback image
+          e.target.onerror = null;
+          e.target.src = "https://placehold.co/600x400/7f1d1d/ffffff?text=Img+Load+Error";
         }}
       />
-      {/* "YA" Logo */}
-      <div className="absolute bottom-2 left-2 bg-black/60 text-white text-[10px] md:text-xs font-bold p-1.5 rounded-sm z-10">
-        YA
+      {/* Logo Display */}
+      <div className="absolute bottom-2 left-2  text-white text-[10px] md:text-xs font-bold p-1.5 rounded-sm z-10">
+        <img src={item.logo} alt={`${item.title} Logo`} className="h-8 w-auto" />
       </div>
-      {/* Hover effect to show title */}
       <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-opacity duration-300 flex items-end p-2.5 z-10">
         <h3 className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75 transform translate-y-2 group-hover:translate-y-0">
           {item.title || 'View Project'}

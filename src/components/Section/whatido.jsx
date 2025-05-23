@@ -94,7 +94,7 @@ export default function GridContainer() {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.5 }}
                 >
-                    What I Do
+                    What I do
                 </motion.h2>
                 <motion.div
                     className="flex items-center justify-center mb-8"
