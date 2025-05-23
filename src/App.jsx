@@ -1,4 +1,5 @@
 import React from 'react';
+// Assuming these components are correctly imported and defined in their respective files
 import Navbar from './components/layout/Navbar';
 import Home from './components/Section/Home';
 import About from './components/Section/About';
@@ -43,6 +44,7 @@ const interactiveCursorUri = `url("data:image/svg+xml,${encodedInteractiveSvg}")
 function App() {
   return (
     <div className="flex flex-col overflow-x-hidden bg-brand-backgroundLight">
+      {/* Custom Cursor Styles */}
       <style jsx global>{`
         /* Apply your custom default cursor to all elements */
         * {
@@ -55,14 +57,27 @@ function App() {
         }
       `}</style>
 
-      {/* Your existing components below */}
+      {/* Navbar Section */}
       <div className="w-full bg-brand-backgroundLight">
         <div className="container-responsive">
           <Navbar />
         </div>
       </div>
 
-      <main className="flex-grow }">
+      {/* Fixed Logo/Icon */}
+      {/* This image will stay fixed on the right side of the screen */}
+      <div className="fixed top-1/2 right-0 transform -translate-y-1/2 z-50">
+        {/* Replace 'https://placehold.co/60x60/000000/FFFFFF?text=Logo' with your actual image URL */}
+        {/* Adjust width (w-16), height (h-16), and other classes as needed */}
+        <img
+          src="/fixedlogo2.png"
+          alt="Company Logo"
+          className="w-16 h-16  shadow-lg border-2 border-none bg-[#02E5FF]"
+        />
+      </div>
+
+      {/* Main Content Area */}
+      <main className="flex-grow">
         <Home />
         <div className="container-responsive">
           <About />
@@ -74,6 +89,7 @@ function App() {
           <FAQ />
         </div>
 
+        {/* Footer Section */}
         <div className="w-full">
           <Footer />
         </div>
