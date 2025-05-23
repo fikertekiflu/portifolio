@@ -330,13 +330,13 @@ class App {
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
     const defaultItems = [
-      { image: `/work1.jpg`, text: 'Anbesa' },
-      { image: `/work3.jpg`, text: 'Pepsi' },
+      { image: `/work1.jpg`, text: 'Pepsi' },
+      { image: `/work3.jpg`, text: 'Anbesa' },
       { image: `ovid2.jpg`, text: 'ovid Realstate' },
       { image: `pepsi2.jpg`, text: 'pepsi' },
       { image: `/work5.jpg`, text: 'Anbesa' },
       { image: `/work6.jpg`, text: 'Quantum Technology' },
-      { image: `work7.jpg`, text: 'Train Track' },
+      { image: `work7.jpg`, text: 'Quantum Technology' },
       { image: `ovid1.jpg`, text: 'ovid Realstate' },
       { image: `pepsi1.jpg`, text: 'pepsi' },
       { image: `work4.jpg`, text: 'Anbesa' },
