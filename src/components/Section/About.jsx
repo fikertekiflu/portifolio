@@ -46,13 +46,13 @@ const About = ({ id }) => {
           >
             As a Digital Marketing
             <img
-              src="/mahderlogo.png"
+              src="/one.png"
               alt="decorative icon one"
               className="inline-block h-9 w-11 md:h-12 md:w-14 mx-3 align-middle"
             />
             Specialist,I Aim to Push Boundaries <br />
             of Creativity.With a Background in analytics and Digital<img
-              src="/oval.png"
+              src="/two.png"
               alt="decorative icon two"
               className="inline-block h-7 w-20 md:h-12 md:w-32 mx-3 align-middle"
             /><br />
